@@ -1,13 +1,40 @@
 import Image from 'next/image';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import CircleImg from '@/app/assets/images/circle.png';
 import HorizentalDots from '@/app/assets/images/horizental-dots.svg';
 import VerticalDots from '@/app/assets/images/vertical-dot.svg';
 
-const HeroSection = () => {
+gsap.registerPlugin(ScrollTrigger);
+
+const HeroSection = ({ createRef }) => {
+  useEffect(() => {
+    const tl = gsap.timeline();
+    // Set the initial state (hidden)
+    tl.from('.reveal-text', { y: '100%', opacity: 0, duration: 0.5 });
+    // Animate to reveal the text
+    tl.to('.reveal-text', {
+      scrollTrigger: {
+        trigger: 'reveal-text',
+        start: 'top top',
+        onEnter: () => console.log('enter'),
+        toggleActions: 'restart restart restart restart',
+        scrub: 1,
+        markers: true,
+      },
+      y: '0%',
+      opacity: 1,
+      duration: 2,
+      ease: 'power4.out',
+    });
+  }, []);
   return (
-    <div className=" main-layout-container mt-[75px] md:mt-[100px]">
+    <div
+      className="panel main-layout-container mt-[75px] md:mt-[100px]"
+      ref={(e) => createRef(e, 0)}
+    >
       <div className="absolute bottom-0 right-0 z-[-10px]">
         <Image
           src={CircleImg}
@@ -29,15 +56,15 @@ const HeroSection = () => {
           alt="HorizentalDots"
           className="hidden lg:block 2xl:my-4"
         />
-        <h1 className="lg:w-[819px] text-56px gradient-text-green">
+        <h1 className="reveal-text lg:w-[819px] text-56px gradient-text-green">
           Unleash Your Business Potential With Our Custom IT Solutions
         </h1>
-        <p className="lg:w-[713px] my-4 2xl:my-8 3xl:my-12 text-lightGray text-18px">
+        <p className="reveal-text lg:w-[713px] my-4 2xl:my-8 3xl:my-12 text-lightGray text-18px">
           Customized solutions to simplify complex business processes, increase
           productivity, and enhance customer satisfaction with Xero Bit
           Technology
         </p>
-        <button className="md-btn bg-green mb-2 lg:mb-0 lg:my-4 2xl:my-8 3xl:my-12 text-white">
+        <button className="reveal-text md-btn bg-green mb-2 lg:mb-0 lg:my-4 2xl:my-8 3xl:my-12 text-white">
           Learn More
         </button>
       </div>

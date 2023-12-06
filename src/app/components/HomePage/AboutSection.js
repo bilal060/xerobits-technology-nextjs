@@ -5,9 +5,9 @@ import AboutLogo from '@/app/assets/images/about-img.svg';
 import AboutTextImg from '@/app/assets/images/about-text.svg';
 import RightCircle from '@/app/assets/images/right-circle.png';
 
-const AboutSections = () => {
+const AboutSections = ({ createRef }) => {
   return (
-    <div className="main-layout-container ">
+    <div className="panel main-layout-container " ref={(e) => createRef(e, 1)}>
       <div className="absolute h-full w-full top-0 right-0">
         <Image
           src={RightCircle}

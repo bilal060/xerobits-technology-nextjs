@@ -6,9 +6,9 @@ import BlogImg1 from '@/app/assets/images/blog-img-1.png';
 import BlogImg2 from '@/app/assets/images/blog-img-2.png';
 import BlogImg3 from '@/app/assets/images/blog-img-3.png';
 
-const BlogSection = () => {
+const BlogSection = ({ createRef }) => {
   return (
-    <div className="main-layout-container ">
+    <div className="main-layout-container " ref={(e) => createRef(e, 6)}>
       <div className="container mx-auto px-4">
         <h3 className="text-48px text-lightGray">read our latest blogs</h3>
         <p className="text-18px my-2 lg:my-4 lg:w-[817px] mx-auto text-center  text-lightGray leading-5">

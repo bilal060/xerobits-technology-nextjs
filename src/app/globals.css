@@ -7,6 +7,9 @@
   margin: 0;
   box-sizing: border-box;
 }
+body {
+  background: var(--darkBg);
+}
 :root {
   --green: #077151;
   --darkBg: #0f0e19;
@@ -94,8 +97,9 @@
 
 /* Hide scrollbar for IE, Edge and Firefox */
 /* body {
-  -ms-overflow-style: none; 
-  scrollbar-width: none; 
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  background: var(--darkBg);
 } */
 
 .transition {

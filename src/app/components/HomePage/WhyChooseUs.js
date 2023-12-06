@@ -5,9 +5,9 @@ import { BsCircleFill } from 'react-icons/bs';
 import WHyUsImage from '@/app/assets/images/why-us-img.svg';
 import BottomCircle from '@/app/assets/images/bottom-circle.png';
 
-const WhyChooseUs = () => {
+const WhyChooseUs = ({ createRef }) => {
   return (
-    <div className="main-layout-container ">
+    <div className="main-layout-container " ref={(e) => createRef(e, 3)}>
       <div className="hidden md:block absolute bottom-0 z-[-10px] w-full opacity-40	">
         <Image
           src={BottomCircle}

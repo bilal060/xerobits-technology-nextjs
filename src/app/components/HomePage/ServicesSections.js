@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import ServicesText from '@/app/assets/images/services-text.png';
 import { servicesImagesData } from '../../../../ServicesImagesData.js';
 
-const ServicesSections = () => {
+const ServicesSections = ({ createRef }) => {
   const [imagePreviewId, setImagePreviewId] = useState(null);
 
   // Changes Grid Layout based on Condition
@@ -20,7 +20,7 @@ const ServicesSections = () => {
   };
 
   return (
-    <div className="main-layout-container ">
+    <div className="main-layout-container " ref={(e) => createRef(e, 2)}>
       <div className="container mx-auto z-10 px-4 h-full">
         <div className=" h-full  flex justify-center flex-col">
           <div className="flex flex-row-reverse items-center">

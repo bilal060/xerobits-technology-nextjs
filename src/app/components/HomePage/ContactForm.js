@@ -7,7 +7,7 @@ import Image from 'next/image';
 import ContactImg from '@/app/assets/images/contact-img.png';
 import TextField from '@/app/shared/TextField';
 
-const ContactForm = () => {
+const ContactForm = ({ createRef }) => {
   // Form Initial Values
   const initialValues = {
     name: '',
@@ -25,7 +25,7 @@ const ContactForm = () => {
     const data = {};
   };
   return (
-    <div className="main-layout-container">
+    <div className="main-layout-container" ref={(e) => createRef(e, 7)}>
       <div className="container mx-auto px-4">
         <div className=" flex flex-col-reverse  mx-auto md:grid md:grid-cols-12  gap-4">
           <div className="flex md:col-span-8 lg:col-span-6 mt-4 lg:mt-12 flex-col  z-10">

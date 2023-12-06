@@ -1,18 +1,34 @@
 import Image from 'next/image';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
 
 import ProjectIdeaImg from '@/app/assets/images/project-idea.png';
 
-const ProjectIdeaSection = () => {
+const ProjectIdeaSection = ({ createRef }) => {
+  let app = useRef('');
+  useEffect(() => {
+    gsap.to(
+      app.current,
+      {
+        opacity: 0.5,
+        duration: 3,
+        y: 40,
+        yoyo: true,
+        repeat: -1,
+      },
+      []
+    );
+  });
   return (
-    <div className="main-layout-container ">
+    <div className="main-layout-container " ref={(e) => createRef(e, 4)}>
       <div className="container px-4 mx-auto">
         <div className="flex items-center justify-center flex-col">
           <div className="">
             <Image
               alt="main-img"
-              className="h-[150px] w-[200px] md:h-[250px] md:w-[350px] 2xl:h-[424px] 2xl:w-[711px]"
+              className="h-[150px] w-[200px] md:h-[250px] object-cover md:w-[350px] lg:w-full lg:h-[300px] 2xl:h-[424px] 2xl:w-[711px]"
               src={ProjectIdeaImg}
+              ref={app}
             />
           </div>
           <h3 className=" text-lightGray text-56px capitalize">

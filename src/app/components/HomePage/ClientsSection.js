@@ -2,10 +2,10 @@ import CarouselComponent from '@/app/shared/Carousel';
 import React from 'react';
 import ReviewCrad from './ReviewCard';
 
-const ClientsSection = () => {
+const ClientsSection = ({ createRef }) => {
   const clientsData = [1, 2, 3, 4, 5, 6, 7];
   return (
-    <div className="main-layout-container">
+    <div className="main-layout-container" ref={(e) => createRef(e, 5)}>
       <div className="container px-4 mx-auto">
         <div className="w-full  flex flex-col justify-center ">
           <h3 className="text-[30px] md:text-[36px] lg:text-[48px]  capitalize text-center font-bold font-tripsans lg:leading-[64px] text-lightGray">
