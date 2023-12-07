@@ -1,18 +1,18 @@
-'use client';
-import React from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useEffect, useRef } from 'react';
-
-import WhyChooseUs from './components/HomePage/WhyChooseUs';
-import AboutSections from './components/HomePage/AboutSection';
-import HeroSection from './components/HomePage/HeroSection';
-import ServicesSections from './components/HomePage/ServicesSections';
-import ProjectIdeaSection from './components/HomePage/ProjectIdeaSection';
-import ClientsSection from './components/HomePage/ClientsSection';
-import BlogSection from './components/HomePage/BlogSection';
-import ContactForm from './components/HomePage/ContactForm';
-import '@/app/assets/css/landing.css';
+"use client";
+import React from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect, useRef } from "react";
+import "@/app/assets/css/button.css";
+import WhyChooseUs from "./components/HomePage/WhyChooseUs";
+import AboutSections from "./components/HomePage/AboutSection";
+import HeroSection from "./components/HomePage/HeroSection";
+import ServicesSections from "./components/HomePage/ServicesSections";
+import ProjectIdeaSection from "./components/HomePage/ProjectIdeaSection";
+import ClientsSection from "./components/HomePage/ClientsSection";
+import BlogSection from "./components/HomePage/BlogSection";
+import ContactForm from "./components/HomePage/ContactForm";
+import "@/app/assets/css/landing.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -26,14 +26,14 @@ const HomePage = () => {
 
   useEffect(() => {
     let tops = panels.current.map((panel) =>
-      ScrollTrigger.create({ trigger: panel, start: 'top 100px' })
+      ScrollTrigger.create({ trigger: panel, start: "top 100px" })
     );
     panels.current.forEach((panel, i) => {
       ScrollTrigger.create({
         trigger: panel,
         start: () =>
           // if it's shorter than the viewport, we prefer to pin it at the top
-          panel.offsetHeight < window.innerHeight ? 'top top' : 'bottom bottom',
+          panel.offsetHeight < window.innerHeight ? "top top" : "bottom bottom",
         pin: true,
         pinSpacing: false,
       });

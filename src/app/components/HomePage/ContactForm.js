@@ -1,24 +1,24 @@
-'use client';
-import React from 'react';
-import { Form, Formik } from 'formik';
-import * as Yup from 'yup';
-import Image from 'next/image';
+"use client";
+import React from "react";
+import { Form, Formik } from "formik";
+import * as Yup from "yup";
+import Image from "next/image";
 
-import ContactImg from '@/app/assets/images/contact-img.png';
-import TextField from '@/app/shared/TextField';
+import ContactImg from "@/app/assets/images/contact-img.png";
+import TextField from "@/app/shared/TextField";
 
 const ContactForm = ({ createRef }) => {
   // Form Initial Values
   const initialValues = {
-    name: '',
-    email: '',
-    message: '',
+    name: "",
+    email: "",
+    message: "",
   };
   // Error Schema
   const errorSchema = Yup.object().shape({
-    name: Yup.string().required('Name is required'),
-    email: Yup.string().email().required('Email is required'),
-    message: Yup.string().required('Message is required'),
+    name: Yup.string().required("Name is required"),
+    email: Yup.string().email().required("Email is required"),
+    message: Yup.string().required("Message is required"),
   });
   // Form Submission
   const handleSubmit = (values, { resetForm }) => {
@@ -54,7 +54,7 @@ const ContactForm = ({ createRef }) => {
                       placeholder="Message"
                       textarea="ture"
                     />
-                    <button className="md-btn bg-green text-white 2xl:mt-8">
+                    <button className="md-btn bg-green text-white 2xl:mt-8 button--ujarak button--border-thick button--text-upper button--size-s button--inverted button--text-thick">
                       Learn More
                     </button>
                   </Form>

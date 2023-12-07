@@ -3,38 +3,48 @@
 @tailwind utilities;
 
 @layer components {
+
   /* Main Layout Style */
   .main-layout-container {
-    @apply bg-darkBg  relative flex flex-col justify-center h-[calc(100vh-75px)]  md:h-[calc(100vh-100px)] overflow-hidden;
+    @apply bg-darkBg relative flex flex-col justify-center h-[calc(100vh-75px)] md:h-[calc(100vh-100px)] overflow-hidden;
   }
+
   /* Green Gradient text */
   .gradient-text-green {
-    @apply text-transparent bg-clip-text bg-gradient-to-br from-white to-green;
+    /* background: linear-gradient(90deg, #B7B7B7 40.12%, #077151 100%); */
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-[#B7B7B7] to-[#077151];
   }
+
   /* Medium Button */
   .md-btn {
     @apply w-[186px] h-[35px] md:h-[43px] lg:h-[56px] xl:h-[56px] rounded-lg text-[18px] font-bold font-tripsans;
   }
+
   /* Text 18 Px Style */
   .text-18px {
-    @apply lg:text-[18px] font-normal font-tripsans  leading-5;
+    @apply lg:text-[18px] font-normal font-tripsans leading-5;
   }
+
   /* Text 56 Px Style */
   .text-56px {
     @apply text-[27px] md:text-[35px] lg:text-[40px] 2xl:text-[56px] font-bold font-tripsans 2xl:leading-[72px];
   }
+
   /* Text 56 Px Style */
   .text-48px {
-    @apply text-[30px] md:text-[36px] lg:text-[48px]  capitalize text-center font-bold font-tripsans lg:leading-[64px];
+    @apply text-[30px] md:text-[36px] lg:text-[48px] capitalize text-center font-bold font-tripsans lg:leading-[64px];
   }
+
   /* Service Section Image Container*/
   .services-img-container {
-    @apply h-full lg:h-[90%] xl:h-full 2xl:max-h-[660px]  bg-no-repeat bg-cover bg-center w-full items-center flex flex-col justify-end;
+    @apply h-full lg:h-[90%] xl:h-full 2xl:max-h-[660px] bg-no-repeat bg-cover bg-center w-full items-center flex flex-col justify-end;
   }
+
   /* Service Section Image Text*/
   .services-img-text {
     @apply md:mb-4 whitespace-nowrap text-[24px] md:text-[30px] 2xl:text-[40px] font-bold font-tripsans text-white;
   }
+
   /* Why Us Section Text*/
   .why-us-section-text {
     @apply text-[14px] md:text-[16px] xl:text-[18px] 2xl:text-[20px] font-normal font-tripsans text-lightGray leading-5 2xl:leading-7;

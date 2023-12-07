@@ -38,7 +38,9 @@ const ProjectIdeaSection = ({ createRef }) => {
             Ready to make your business stand out in this digital world? Contact
             us today to arrange a consultation with one of our experts
           </p>
-          <button className="md-btn bg-green text-white">Lets Talk</button>
+          <button className="md-btn bg-green text-white button--ujarak button--border-thick button--text-upper button--size-s button--inverted button--text-thick">
+            Lets Talk
+          </button>
         </div>
       </div>
     </div>

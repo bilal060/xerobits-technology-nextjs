@@ -1,10 +1,10 @@
-import Image from 'next/image';
-import React from 'react';
-import { FaAngleRight } from 'react-icons/fa';
+import Image from "next/image";
+import React from "react";
+import { FaAngleRight } from "react-icons/fa";
 
-import BlogImg1 from '@/app/assets/images/blog-img-1.png';
-import BlogImg2 from '@/app/assets/images/blog-img-2.png';
-import BlogImg3 from '@/app/assets/images/blog-img-3.png';
+import BlogImg1 from "@/app/assets/images/blog-img-1.png";
+import BlogImg2 from "@/app/assets/images/blog-img-2.png";
+import BlogImg3 from "@/app/assets/images/blog-img-3.png";
 
 const BlogSection = ({ createRef }) => {
   return (
@@ -88,7 +88,9 @@ const BlogSection = ({ createRef }) => {
           </div>
         </div>
         <div className="flex justify-center items-center mt-8">
-          <button className="md-btn bg-green text-white">View More</button>
+          <button className="md-btn bg-green text-white button--ujarak button--border-thick button--text-upper button--size-s button--inverted button--text-thick">
+            View More
+          </button>
         </div>
       </div>
     </div>

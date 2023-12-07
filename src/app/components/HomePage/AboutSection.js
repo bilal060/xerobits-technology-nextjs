@@ -1,9 +1,9 @@
-import Image from 'next/image';
-import React from 'react';
+import Image from "next/image";
+import React from "react";
 
-import AboutLogo from '@/app/assets/images/about-img.svg';
-import AboutTextImg from '@/app/assets/images/about-text.svg';
-import RightCircle from '@/app/assets/images/right-circle.png';
+import AboutLogo from "@/app/assets/images/about-img.svg";
+import AboutTextImg from "@/app/assets/images/about-text.svg";
+import RightCircle from "@/app/assets/images/right-circle.png";
 
 const AboutSections = ({ createRef }) => {
   return (
@@ -12,20 +12,21 @@ const AboutSections = ({ createRef }) => {
         <Image
           src={RightCircle}
           alt="about-right-circle"
-          className=" hidden md:block md:w-[70%] lg:w-[800px] xl:max-w-[1252px] 2xl:w-[1252px]  h-[100%] 2xl:h-[100%] z-[-10px] absolute right-0"
+          className=" hidden lg:block h-[100%] 2xl:h-[100%] z-[-10px] absolute right-0 w-max lg:rotate-0 rotate-90"
         />
       </div>
       <div className="container px-4 mx-auto z-10">
         <div className="flex flex-col-reverse lg:grid md:grid-cols-12  gap-4 z-10">
           <div className="flex lg:col-span-8 2xl:col-span-6  flex-col justify-center z-10">
-            <div className="flex items-center h-full">
+            <div className="flex md:flex-row flex-col md:items-center items-start h-full md:gap-8 sm:gap-4 gap-2">
               <Image
                 src={AboutTextImg}
                 alt="about-text"
-                className=" hidden md:block md:h-[350px] lg:h-[90%] 2xl:h-[100%] z-[-10px]"
+                className=" hidden md:block md:h-[350px] lg:h-[80%] 2xl:h-[90%] z-[-10px]"
               />
+              <h1 className="about-us md:hidden block">ABOUT US</h1>
 
-              <div className="md:ml-8 flex flex-col 2xl:justify-around ">
+              <div className="flex flex-col 2xl:justify-around ">
                 <h3 className="text-[24px] lg:text-[48px] 2xl:text-[56px] font-tripsans font-bold text-lightGray lg:w-[552px] 2xl:w-[600px]">
                   Our Approach to Digital Solutions
                 </h3>
@@ -45,9 +46,9 @@ const AboutSections = ({ createRef }) => {
                   business can grow and evolve without being held back by
                   technological limitations. With our innovative digital
                   solutions, you can stay ahead of the curve and remain
-                  competitive in today's fast-paced digital landscape.
+                  competitive in today&apos;s fast-paced digital landscape.
                 </p>
-                <button className="md-btn bg-green text-white 2xl:mt-10">
+                <button className="md-btn bg-green text-white 2xl:mt-10 button--ujarak button--border-thick button--text-upper button--size-s button--inverted button--text-thick">
                   Get Started Today
                 </button>
               </div>
