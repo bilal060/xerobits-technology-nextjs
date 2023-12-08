@@ -1,14 +1,19 @@
-'use client';
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
-import React from 'react';
+"use client";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import React from "react";
 
 const CarouselComponent = (props) => {
   const responsive = {
     desktop: {
-      breakpoint: { max: 3000, min: 1024 },
+      breakpoint: { max: 3000, min: 1240 },
       items: 4,
       slidesToSlide: 4, // optional, default to 1.
+    },
+    desktop: {
+      breakpoint: { max: 1240, min: 1024 },
+      items: 3,
+      slidesToSlide: 3, // optional, default to 1.
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
@@ -35,9 +40,10 @@ const CarouselComponent = (props) => {
       autoPlay={true}
       pauseOnHover={true}
       containerClass="carousel-container"
-      removeArrowOnDeviceType={['']}
+      removeArrowOnDeviceType={[""]}
+      arrows={false}
       dotListClass="custom-dot-list-style"
-      itemClass="carousel-item-padding-40-px mx-0 md:ml-1"
+      itemClass="carousel-item-padding-40-px mx-0 ml-2 md:ml-4"
     >
       {props?.children}
     </Carousel>

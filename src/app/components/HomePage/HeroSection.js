@@ -5,6 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CircleImg from "@/app/assets/images/circle.png";
 import HorizentalDots from "@/app/assets/images/horizental-dots.svg";
 import VerticalDots from "@/app/assets/images/vertical-dot.svg";
+import Button from "@/app/shared/Button";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,13 +15,6 @@ const HeroSection = ({ createRef }) => {
       className="panel main-layout-container mt-[75px] md:mt-[100px] hero-section"
       ref={(e) => createRef(e, 0)}
     >
-      {/* <div className="absolute bottom-0 right-0 z-[-10px]">
-        <Image
-          src={CircleImg}
-          alt="circle"
-          className="md:h-[500px] lg:h-[500px] 2xl:h-[400px] 4xl:h-[1500px]"
-        />
-      </div> */}
       <div className="hidden md:block absolute top-[calc(50%-50px)] dotted-square translate-y-[-50%] ">
         <Image
           src={HorizentalDots}
@@ -44,9 +38,11 @@ const HeroSection = ({ createRef }) => {
           Technology
         </p>
         <div class="content yobject-marked">
-          <button class="reveal-text md-btn bg-green mb-2 lg:mb-0 lg:my-4 2xl:my-8 3xl:my-12 text-white button--ujarak button--border-thick button--text-upper button--size-s button--inverted button--text-thick">
-            Learn More
-          </button>
+          <Button
+            className="md-btn mb-2 lg:mb-0 lg:my-4 2xl:my-8 3xl:my-12"
+            type="green"
+            text="Learn More"
+          />
         </div>
       </div>
       <div className="2xl:container 2xl:mx-auto">

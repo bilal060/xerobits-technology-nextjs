@@ -4,6 +4,7 @@ import React, { useState } from "react";
 
 import ServicesText from "@/app/assets/images/services-text.png";
 import { servicesImagesData } from "../../../../ServicesImagesData.js";
+import Button from "@/app/shared/Button.js";
 
 const ServicesSections = ({ createRef }) => {
   const [imagePreviewId, setImagePreviewId] = useState(null);
@@ -21,7 +22,10 @@ const ServicesSections = ({ createRef }) => {
   };
 
   return (
-    <div className="main-layout-container " ref={(e) => createRef(e, 2)}>
+    <div
+      className="main-layout-container services"
+      ref={(e) => createRef(e, 2)}
+    >
       <div className="container mx-auto z-10 px-4 h-full">
         <div className=" h-full  flex justify-center flex-col">
           <div className="flex flex-row-reverse items-center">
@@ -66,19 +70,19 @@ const ServicesSections = ({ createRef }) => {
                     >
                       <h3 className="services-img-text">{data?.title}</h3>
                       <p className="text-18px text-white mb-4">{data?.text}</p>
-                      <button className="md-btn text-white bg-transparent border border-white">
-                        View All
-                      </button>
+                      <Button
+                        className="md-btn border-white"
+                        type="white"
+                        text="View All"
+                      />
                     </div>
                   </div>
                 </div>
               ))}
             </div>
           </div>
-          <div className="flex items-center my-4 2xl:mt-12 justify-center">
-            <button className="md-btn  bg-green text-white button--ujarak button--border-thick button--text-upper button--size-s button--inverted button--text-thick">
-              View More
-            </button>
+          <div className="flex items-center mt-6 lg:mt-8  xl:mt-12 justify-center">
+            <Button className="md-btn" type="green" text="View More" />
           </div>
         </div>
       </div>

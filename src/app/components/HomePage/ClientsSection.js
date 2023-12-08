@@ -1,6 +1,6 @@
-import CarouselComponent from '@/app/shared/Carousel';
-import React from 'react';
-import ReviewCrad from './ReviewCard';
+import CarouselComponent from "@/app/shared/Carousel";
+import React from "react";
+import ReviewCrad from "./ReviewCard";
 
 const ClientsSection = ({ createRef }) => {
   const clientsData = [1, 2, 3, 4, 5, 6, 7];
@@ -16,12 +16,21 @@ const ClientsSection = ({ createRef }) => {
             nec vulputate lectus, in accumsan leo. Aliquam tempor orci sed ex
             facilisis vestibulum.
           </p>
-          <div className="my-8">
-            <CarouselComponent>
-              {clientsData?.map((data, index) => (
-                <ReviewCrad key={index} />
-              ))}
-            </CarouselComponent>
+          <div className="my-8 flex flex-col gap-2 md:gap-4">
+            <div className="w-full">
+              <CarouselComponent>
+                {clientsData?.map((data, index) => (
+                  <ReviewCrad key={index} />
+                ))}
+              </CarouselComponent>
+            </div>
+            <div className="w-full md:block hidden">
+              <CarouselComponent>
+                {clientsData?.map((data, index) => (
+                  <ReviewCrad key={index} />
+                ))}
+              </CarouselComponent>
+            </div>
           </div>
         </div>
       </div>

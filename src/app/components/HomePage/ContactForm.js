@@ -6,6 +6,7 @@ import Image from "next/image";
 
 import ContactImg from "@/app/assets/images/contact-img.png";
 import TextField from "@/app/shared/TextField";
+import Button from "@/app/shared/Button";
 
 const ContactForm = ({ createRef }) => {
   // Form Initial Values
@@ -25,7 +26,10 @@ const ContactForm = ({ createRef }) => {
     const data = {};
   };
   return (
-    <div className="main-layout-container" ref={(e) => createRef(e, 7)}>
+    <div
+      className="main-layout-container contact-us"
+      ref={(e) => createRef(e, 7)}
+    >
       <div className="container mx-auto px-4">
         <div className=" flex flex-col-reverse  mx-auto md:grid md:grid-cols-12  gap-4">
           <div className="flex md:col-span-8 lg:col-span-6 mt-4 lg:mt-12 flex-col  z-10">
@@ -40,7 +44,7 @@ const ContactForm = ({ createRef }) => {
               >
                 {(props) => (
                   <Form className="w-full">
-                    <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-4 mb-4 2xl:my-8">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-2 md:gap-4 gap-1 mb-4 2xl:my-8">
                       <TextField
                         type="text"
                         name="name"
@@ -54,19 +58,21 @@ const ContactForm = ({ createRef }) => {
                       placeholder="Message"
                       textarea="ture"
                     />
-                    <button className="md-btn bg-green text-white 2xl:mt-8 button--ujarak button--border-thick button--text-upper button--size-s button--inverted button--text-thick">
-                      Learn More
-                    </button>
+                    <Button
+                      className="md-btn xl:mt-[56px] lg:mt-[44px] md:mt-[36px] mt-3"
+                      type="green"
+                      text="Send Message"
+                    />
                   </Form>
                 )}
               </Formik>
             </div>
           </div>
-          <div className=" md:col-span-4 lg:col-span-6 flex mt-4 lg:mt-12  items-center justify-center flex-col z-10">
+          <div className=" md:col-span-4 lg:col-span-6  mt-4 lg:mt-12  items-center justify-center flex-col z-10 sm:flex hidden">
             <Image
               src={ContactImg}
               alt="about-text"
-              className="w-full max-w-[400px] h-[300px] md:w-full md:h-[350px] lg:max-w-[500px] lg:h-[400px] z-[-10px]"
+              className="w-full max-w-[400px] h-[300px] md:w-full md:h-[350px] lg:max-w-[500px] lg:h-[400px] z-[-10px] "
             />
           </div>
         </div>

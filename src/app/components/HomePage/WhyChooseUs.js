@@ -1,20 +1,16 @@
-import Image from 'next/image';
-import React from 'react';
-import { BsCircleFill } from 'react-icons/bs';
+import Image from "next/image";
+import React from "react";
+import { BsCircleFill } from "react-icons/bs";
 
-import WHyUsImage from '@/app/assets/images/why-us-img.svg';
-import BottomCircle from '@/app/assets/images/bottom-circle.png';
+import WHyUsImage from "@/app/assets/images/why-us-img.svg";
+import BottomCircle from "@/app/assets/images/bottom-circle.png";
 
 const WhyChooseUs = ({ createRef }) => {
   return (
-    <div className="main-layout-container " ref={(e) => createRef(e, 3)}>
-      <div className="hidden md:block absolute bottom-0 z-[-10px] w-full opacity-40	">
-        <Image
-          src={BottomCircle}
-          alt="circle"
-          className="w-full h-[500px] 2xl:h-[800px] 4xl:h-full"
-        />
-      </div>
+    <div
+      className="main-layout-container choose-us"
+      ref={(e) => createRef(e, 3)}
+    >
       <div className="container mx-auto z-10 px-4 h-full flex">
         <div className="flex flex-col-reverse justify-center lg:grid grid-cols-12 gap-4">
           <div className=" md:col-span-8 lg:col-span-6 flex flex-col justify-center">

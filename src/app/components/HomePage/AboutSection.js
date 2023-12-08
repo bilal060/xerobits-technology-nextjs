@@ -4,6 +4,7 @@ import React from "react";
 import AboutLogo from "@/app/assets/images/about-img.svg";
 import AboutTextImg from "@/app/assets/images/about-text.svg";
 import RightCircle from "@/app/assets/images/right-circle.png";
+import Button from "@/app/shared/Button";
 
 const AboutSections = ({ createRef }) => {
   return (
@@ -48,9 +49,11 @@ const AboutSections = ({ createRef }) => {
                   solutions, you can stay ahead of the curve and remain
                   competitive in today&apos;s fast-paced digital landscape.
                 </p>
-                <button className="md-btn bg-green text-white 2xl:mt-10 button--ujarak button--border-thick button--text-upper button--size-s button--inverted button--text-thick">
-                  Get Started Today
-                </button>
+                <Button
+                  className="md-btn 2xl:mt-10"
+                  type="green"
+                  text="Get Started Today"
+                />
               </div>
             </div>
           </div>

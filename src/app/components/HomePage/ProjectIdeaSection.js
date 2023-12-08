@@ -1,18 +1,36 @@
-import Image from 'next/image';
-import React, { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
+"use-client";
+import Image from "next/image";
+import React, { useEffect, useRef } from "react";
+import { gsap } from "gsap";
 
-import ProjectIdeaImg from '@/app/assets/images/project-idea.png';
+import ProjectIdeaRocketImg from "@/app/assets/images/rocket.svg";
+import ProjectIdeaVerifiedImg from "@/app/assets/images/verified.svg";
+import Button from "@/app/shared/Button";
 
 const ProjectIdeaSection = ({ createRef }) => {
-  let app = useRef('');
+  let rocket = useRef("");
+  let verified = useRef("");
+  let xValue =
+    typeof window !== "undefined" && window.innerWidth > 768 ? 200 : 120;
+  let yValue =
+    typeof window !== "undefined" && window.innerWidth > 768 ? 200 : 120;
+
   useEffect(() => {
     gsap.to(
-      app.current,
+      rocket.current,
       {
-        opacity: 0.5,
         duration: 3,
-        y: 40,
+        y: xValue,
+        yoyo: true,
+        repeat: -1,
+      },
+      []
+    );
+    gsap.to(
+      verified.current,
+      {
+        duration: 3,
+        x: yValue,
         yoyo: true,
         repeat: -1,
       },
@@ -23,12 +41,18 @@ const ProjectIdeaSection = ({ createRef }) => {
     <div className="main-layout-container " ref={(e) => createRef(e, 4)}>
       <div className="container px-4 mx-auto">
         <div className="flex items-center justify-center flex-col">
-          <div className="">
+          <div className="bg-project-idea-laptop  md:h-[410px] sm:h-[220px] h-[200px] md:w-[600px] sm:w-[350px] w-[300px] relative">
+            <Image
+              alt="rocket-img"
+              src={ProjectIdeaRocketImg}
+              ref={rocket}
+              className="absolute right-0 md:h-[120px] md:w-[120px] h-[60px] w-[60px]"
+            />
             <Image
               alt="main-img"
-              className="h-[150px] w-[200px] md:h-[250px] object-cover md:w-[350px] lg:w-full lg:h-[300px] 2xl:h-[424px] 2xl:w-[711px]"
-              src={ProjectIdeaImg}
-              ref={app}
+              className="absolute bottom-0 md:h-[120px] md:w-[120px] h-[60px] w-[60px]"
+              src={ProjectIdeaVerifiedImg}
+              ref={verified}
             />
           </div>
           <h3 className=" text-lightGray text-56px capitalize">
@@ -38,9 +62,7 @@ const ProjectIdeaSection = ({ createRef }) => {
             Ready to make your business stand out in this digital world? Contact
             us today to arrange a consultation with one of our experts
           </p>
-          <button className="md-btn bg-green text-white button--ujarak button--border-thick button--text-upper button--size-s button--inverted button--text-thick">
-            Lets Talk
-          </button>
+          <Button className="md-btn" type="green" text="Lets Talk" />
         </div>
       </div>
     </div>
