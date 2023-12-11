@@ -1,18 +1,20 @@
 import Image from "next/image";
 import React, { useEffect } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { gsap } from "gsap";
+
 import AboutLogo from "@/app/assets/images/about-img.svg";
 import AboutTextImg from "@/app/assets/images/about-text.svg";
 import RightCircle from "@/app/assets/images/right-circle.png";
 import Button from "@/app/shared/Button";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const AboutSections = ({ createRef }) => {
   useEffect(() => {
-    const initialAnimation = gsap.timeline();
-    initialAnimation.from(".right-circle", {
+    // Right Circle Animation
+    const rightCircleAnimation = gsap.timeline();
+    rightCircleAnimation.from(".right-circle", {
       x: "100%",
       opacity: 0,
       duration: 3,
@@ -61,7 +63,60 @@ const AboutSections = ({ createRef }) => {
       },
       toggleActions: "play none none none",
     });
+
+    // About Us Image Animation
+    const aboutUsImageAnimation = gsap.timeline();
+    aboutUsImageAnimation.from(".about-us-img", {
+      x: "-100%", // Slide in from the left
+      opacity: 0,
+      duration: 3,
+      ease: "power2.out",
+    });
+
+    ScrollTrigger.create({
+      trigger: ".about-us-img",
+      start: "top bottom",
+      end: "bottom top",
+      onEnter: () => {
+        const tl = gsap.timeline();
+        tl.to(".about-us-img", {
+          x: "0%",
+          opacity: 1,
+          duration: 3,
+          ease: "power4.out",
+        });
+      },
+      onLeaveBack: () => {
+        const tl = gsap.timeline();
+        tl.to(".about-us-img", {
+          x: "-100%",
+          opacity: 0,
+          duration: 3,
+          ease: "power4.out",
+        });
+      },
+      onEnterBack: () => {
+        const tl = gsap.timeline();
+        tl.to(".about-us-img", {
+          x: "0%",
+          opacity: 1,
+          duration: 3,
+          ease: "power4.out",
+        });
+      },
+      onLeave: () => {
+        const tl = gsap.timeline();
+        tl.to(".about-us-img", {
+          x: "100%",
+          opacity: 0,
+          duration: 3,
+          ease: "power4.out",
+        });
+      },
+      toggleActions: "play none none none",
+    });
   }, []);
+
   return (
     <div className="panel main-layout-container " ref={(e) => createRef(e, 1)}>
       <div className="absolute h-full w-full top-0 right-0">
@@ -78,7 +133,7 @@ const AboutSections = ({ createRef }) => {
               <Image
                 src={AboutTextImg}
                 alt="about-text"
-                className=" hidden md:block md:h-[350px] lg:h-[80%] 2xl:h-[90%] z-[-10px]"
+                className=" hidden md:block md:h-[350px] lg:h-[80%] 2xl:h-[90%] z-[-10px] about-us-img"
               />
               <h1 className="about-us md:hidden block">ABOUT US</h1>
 

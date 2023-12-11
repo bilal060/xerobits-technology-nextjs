@@ -6,7 +6,7 @@ import StarImg from "@/app/assets/images/star.png";
 
 const ReviewCrad = () => {
   return (
-    <div className="w-full h-auto py-8 md:py-0 px-4 flex flex-col justify-center md:max-w-[397px] md:h-[276px]  bg-[#23222D] rounded-xl">
+    <div className="w-full h-auto py-8  md:py-0 px-4 flex flex-col justify-center md:max-w-[95%] md:h-[276px]  bg-[#23222D] rounded-xl">
       <p className="text-[14px] mb-4  text-lightGray font-normal font-tripsans leading-5">
         “The services provided by Xero Bit Technology have been extremely
         beneficial for us as they have acted as an extension of our IT

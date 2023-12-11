@@ -1,13 +1,71 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import ServicesText from "@/app/assets/images/services-text.png";
 import { servicesImagesData } from "../../../../ServicesImagesData.js";
 import Button from "@/app/shared/Button.js";
 
+gsap.registerPlugin(ScrollTrigger);
+
 const ServicesSections = ({ createRef }) => {
   const [imagePreviewId, setImagePreviewId] = useState(null);
+
+  useEffect(() => {
+    // Services Image Animation
+    const aboutUsImageAnimation = gsap.timeline();
+    aboutUsImageAnimation.from(".services-img", {
+      x: "100%",
+      opacity: 0,
+      duration: 3,
+      ease: "power2.out",
+    });
+
+    ScrollTrigger.create({
+      trigger: ".services-img",
+      start: "top bottom",
+      end: "bottom top",
+      onEnter: () => {
+        const tl = gsap.timeline();
+        tl.to(".services-img", {
+          x: "0%",
+          opacity: 1,
+          duration: 3,
+          ease: "power4.out",
+        });
+      },
+      onLeaveBack: () => {
+        const tl = gsap.timeline();
+        tl.to(".services-img", {
+          x: "100%",
+          opacity: 0,
+          duration: 3,
+          ease: "power4.out",
+        });
+      },
+      onEnterBack: () => {
+        const tl = gsap.timeline();
+        tl.to(".services-img", {
+          x: "0%",
+          opacity: 1,
+          duration: 3,
+          ease: "power4.out",
+        });
+      },
+      onLeave: () => {
+        const tl = gsap.timeline();
+        tl.to(".services-img", {
+          x: "100%",
+          opacity: 0,
+          duration: 3,
+          ease: "power4.out",
+        });
+      },
+      toggleActions: "play none none none",
+    });
+  }, []);
 
   // Changes Grid Layout based on Condition
   const changeGridLayout = (id) => {
@@ -32,7 +90,7 @@ const ServicesSections = ({ createRef }) => {
             <div>
               <Image
                 alt="services-text-img"
-                className="hidden md:block h-[400px] w-[40px] xl:h-[430px] xl:w-[45px] 3xl:w-[75px] 3xl:h-[760px] ml-8 "
+                className="hidden md:block h-[400px] w-[40px] xl:h-[430px] xl:w-[45px] 3xl:w-[75px] 3xl:h-[760px] ml-8 services-img"
                 src={ServicesText}
               />
             </div>
