@@ -103,7 +103,7 @@ const ServicesSections = ({ createRef }) => {
                   key={index}
                 >
                   <div
-                    className="services-img-container transition md:py-0 sm:py-6 py-3"
+                    className="services-img-container transition md:py-0 sm:py-4 py-3"
                     style={{
                       backgroundImage: `${
                         checkImageId(data?.id)
@@ -139,7 +139,7 @@ const ServicesSections = ({ createRef }) => {
               ))}
             </div>
           </div>
-          <div className="flex items-center mt-6 lg:mt-8  xl:mt-12 justify-center">
+          <div className="flex items-center mt-6 lg:mt-8 2xl:mt-12 justify-center">
             <Button className="md-btn" type="green" text="View More" />
           </div>
         </div>

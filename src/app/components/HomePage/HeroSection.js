@@ -91,7 +91,7 @@ const HeroSection = ({ createRef }) => {
           productivity, and enhance customer satisfaction with Xero Bit
           Technology
         </p>
-        <div class="content yobject-marked reveal-text">
+        <div className="content yobject-marked reveal-text">
           <Button
             className="md-btn mb-2 lg:mb-0 lg:my-4 2xl:my-8 3xl:my-12"
             type="green"
