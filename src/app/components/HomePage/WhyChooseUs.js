@@ -29,58 +29,56 @@ const WhyChooseUs = ({ createRef }) => {
     initialAnimation.from(".bottom-circle", {
       y: "-100%",
       opacity: 0,
-      duration: 3,
+      duration: 2,
       ease: "power2.out",
     });
 
-    gsap.utils.toArray(".bottom-circle").forEach((text) => {
-      ScrollTrigger.create({
-        trigger: ".bottom-circle",
-        start: "top bottom",
-        end: "bottom top",
-        onEnter: () => {
-          const tl = gsap.timeline();
-          tl.to(text, {
-            y: "0%",
-            opacity: 1,
-            duration: 3,
-            ease: "power4.out",
-          });
-        },
-        onLeaveBack: () => {
-          const tl = gsap.timeline();
-          tl.to(text, {
-            y: "100%",
-            opacity: 0,
-            duration: 3,
-            ease: "power4.out",
-          });
-        },
-        onEnterBack: () => {
-          const tl = gsap.timeline();
-          tl.to(text, {
-            y: "0%",
-            opacity: 1,
-            duration: 3,
-            ease: "power4.out",
-          });
-        },
-        onLeave: () => {
-          const tl = gsap.timeline();
-          tl.to(text, {
-            y: "100%",
-            opacity: 0,
-            duration: 3,
-            ease: "power4.out",
-          });
-        },
-        toggleActions: "play none none none",
-      });
+    ScrollTrigger.create({
+      trigger: ".bottom-circle",
+      start: "top bottom",
+      end: "bottom top",
+      onEnter: () => {
+        const tl = gsap.timeline();
+        tl.to(".bottom-circle", {
+          y: "0%",
+          opacity: 1,
+          duration: 2,
+          ease: "power4.out",
+        });
+      },
+      onLeaveBack: () => {
+        const tl = gsap.timeline();
+        tl.to(".bottom-circle", {
+          y: "100%",
+          opacity: 0,
+          duration: 2,
+          ease: "power4.out",
+        });
+      },
+      onEnterBack: () => {
+        const tl = gsap.timeline();
+        tl.to(".bottom-circle", {
+          y: "0%",
+          opacity: 1,
+          duration: 2,
+          ease: "power4.out",
+        });
+      },
+      onLeave: () => {
+        const tl = gsap.timeline();
+        tl.to(".bottom-circle", {
+          y: "100%",
+          opacity: 0,
+          duration: 2,
+          ease: "power4.out",
+        });
+      },
+      toggleActions: "play none none none",
     });
   }, []);
   return (
     <div className="main-layout-container" ref={(e) => createRef(e, 3)}>
-      <div className="absolute bottom-0 z-[-10px] w-full opacity-20 lg:opacity-100">
+      <div className="absolute bottom-0 z-[-10px] w-full opacity-50 lg:opacity-100">
         <Image
           src={BottomCircle}
           alt="circle"

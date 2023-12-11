@@ -24,7 +24,7 @@ const ClientsSection = ({ createRef }) => {
                 ))}
               </CarouselComponent>
             </div>
-            <div className="w-full md:block hidden">
+            <div className="w-full 2xl:block hidden">
               <CarouselComponent>
                 {clientsData?.map((data, index) => (
                   <ReviewCrad key={index} />

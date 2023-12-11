@@ -35,7 +35,7 @@ const BlogSection = ({ createRef }) => {
     <div className="main-layout-container blogs" ref={(e) => createRef(e, 6)}>
       <div className="container mx-auto px-4">
         <h3 className="text-48px text-lightGray">read our latest blogs</h3>
-        <p className="text-18px lg:mb-[60px] sm:mb-12 mb-6 mt-4 lg:w-[817px] mx-auto text-center  text-lightGray leading-5">
+        <p className="text-18px my-2 lg:my-4 lg:w-[817px] mx-auto text-center  text-lightGray leading-5">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
           nec vulputate lectus, in accumsan leo. Aliquam tempor orci sed ex
           facilisis vestibulum.
@@ -72,8 +72,8 @@ const BlogSection = ({ createRef }) => {
               </div>
             ))}
         </div>
-        <div className="flex justify-center items-center mt-8">
-          <Button className="md-btn mt-10" type="green" text="View More" />
+        <div className="flex justify-center items-center 2xl:mt-8 mt-6">
+          <Button className="md-btn" type="green" text="View More" />
         </div>
       </div>
     </div>
