@@ -10,6 +10,60 @@ import Button from "@/app/shared/Button";
 gsap.registerPlugin(ScrollTrigger);
 
 const HeroSection = ({ createRef }) => {
+  useEffect(() => {
+    const initialAnimation = gsap.timeline();
+    initialAnimation.from(".reveal-text", {
+      y: "100%",
+      opacity: 0,
+      duration: 1,
+      ease: "power2.out",
+    });
+
+    gsap.utils.toArray(".reveal-text").forEach((text) => {
+      ScrollTrigger.create({
+        trigger: text,
+        start: "top bottom",
+        end: "bottom top",
+        onEnter: () => {
+          const tl = gsap.timeline();
+          tl.to(text, {
+            y: "0%",
+            opacity: 1,
+            duration: 3,
+            ease: "power4.out",
+          });
+        },
+        onLeaveBack: () => {
+          const tl = gsap.timeline();
+          tl.to(text, {
+            y: "100%",
+            opacity: 0,
+            duration: 3,
+            ease: "power4.out",
+          });
+        },
+        onEnterBack: () => {
+          const tl = gsap.timeline();
+          tl.to(text, {
+            y: "0%",
+            opacity: 1,
+            duration: 3,
+            ease: "power4.out",
+          });
+        },
+        onLeave: () => {
+          const tl = gsap.timeline();
+          tl.to(text, {
+            y: "100%",
+            opacity: 0,
+            duration: 3,
+            ease: "power4.out",
+          });
+        },
+        toggleActions: "play none none none",
+      });
+    });
+  }, []);
   return (
     <div
       className="panel main-layout-container mt-[75px] md:mt-[100px] hero-section"
@@ -37,7 +91,7 @@ const HeroSection = ({ createRef }) => {
           productivity, and enhance customer satisfaction with Xero Bit
           Technology
         </p>
-        <div class="content yobject-marked">
+        <div class="content yobject-marked reveal-text">
           <Button
             className="md-btn mb-2 lg:mb-0 lg:my-4 2xl:my-8 3xl:my-12"
             type="green"
@@ -45,7 +99,7 @@ const HeroSection = ({ createRef }) => {
           />
         </div>
       </div>
-      <div className="2xl:container 2xl:mx-auto">
+      <div className="2xl:container 2xl:mx-auto reveal-text">
         <div className="home-rectangle-bg bg-cover bg-center bg-no-repeat  flex flex-col justify-center w-full sm:w-[70%] h-[160px] sm:h-[200px] 2xl:h-[280px] lg:w-[618px]">
           <div className="flex w-[70%] items-center justify-around mx-auto">
             <div className="flex flex-col items-center">

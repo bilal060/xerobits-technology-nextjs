@@ -24,7 +24,7 @@ const TextField = ({ label, ...props }) => {
         <ErrorMessage
           component="small"
           name={field.name}
-          className="text-red-500 font-tripsans font-normal text-[16px] mt-2"
+          className="text-red-500 font-tripsans font-normal text-[16px] pt-2"
         />
       </div>
     );

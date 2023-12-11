@@ -1,8 +1,8 @@
-import Image from 'next/image';
-import React from 'react';
+import Image from "next/image";
+import React from "react";
 
-import ClientImg from '@/app/assets/images/client-user.png';
-import StarImg from '@/app/assets/images/star.png';
+import ClientImg from "@/app/assets/images/client-user.png";
+import StarImg from "@/app/assets/images/star.png";
 
 const ReviewCrad = () => {
   return (

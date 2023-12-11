@@ -52,7 +52,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: var(--Green, #043e2d);
+    background: var(--Green, #004929);
     z-index: -1;
     opacity: 0;
     -webkit-transform: scale3d(0.7, 1, 1);

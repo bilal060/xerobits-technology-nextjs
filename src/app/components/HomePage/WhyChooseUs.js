@@ -1,16 +1,92 @@
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 import { BsCircleFill } from "react-icons/bs";
-
+import { gsap } from "gsap";
 import WHyUsImage from "@/app/assets/images/why-us-img.svg";
 import BottomCircle from "@/app/assets/images/bottom-circle.png";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const WhyChooseUs = ({ createRef }) => {
+  // useEffect(() => {
+  //   gsap.from(".bottom-circle", {
+  //     y: "-100%",
+  //     opacity: 0,
+  //     duration: 2,
+  //     ease: "power4.out",
+  //     scrollTrigger: {
+  //       trigger: ".bottom-circle",
+  //       start: "top 80%",
+  //       end: "bottom top", // Adjust the end trigger to ensure it re-triggers when scrolling back up
+  //       toggleActions: "play none none reverse",
+  //     },
+  //   });
+  // });
+
+  useEffect(() => {
+    const initialAnimation = gsap.timeline();
+    initialAnimation.from(".bottom-circle", {
+      y: "-100%",
+      opacity: 0,
+      duration: 3,
+      ease: "power2.out",
+    });
+
+    gsap.utils.toArray(".bottom-circle").forEach((text) => {
+      ScrollTrigger.create({
+        trigger: ".bottom-circle",
+        start: "top bottom",
+        end: "bottom top",
+        onEnter: () => {
+          const tl = gsap.timeline();
+          tl.to(text, {
+            y: "0%",
+            opacity: 1,
+            duration: 3,
+            ease: "power4.out",
+          });
+        },
+        onLeaveBack: () => {
+          const tl = gsap.timeline();
+          tl.to(text, {
+            y: "100%",
+            opacity: 0,
+            duration: 3,
+            ease: "power4.out",
+          });
+        },
+        onEnterBack: () => {
+          const tl = gsap.timeline();
+          tl.to(text, {
+            y: "0%",
+            opacity: 1,
+            duration: 3,
+            ease: "power4.out",
+          });
+        },
+        onLeave: () => {
+          const tl = gsap.timeline();
+          tl.to(text, {
+            y: "100%",
+            opacity: 0,
+            duration: 3,
+            ease: "power4.out",
+          });
+        },
+        toggleActions: "play none none none",
+      });
+    });
+  }, []);
   return (
-    <div
-      className="main-layout-container choose-us"
-      ref={(e) => createRef(e, 3)}
-    >
+    <div className="main-layout-container" ref={(e) => createRef(e, 3)}>
+      <div className="absolute bottom-0 z-[-10px] w-full opacity-20 lg:opacity-100">
+        <Image
+          src={BottomCircle}
+          alt="circle"
+          className="w-full h-full bottom-circle"
+        />
+      </div>
       <div className="container mx-auto z-10 px-4 h-full flex">
         <div className="flex flex-col-reverse justify-center lg:grid grid-cols-12 gap-4">
           <div className=" md:col-span-8 lg:col-span-6 flex flex-col justify-center">

@@ -2,10 +2,11 @@
 import Image from "next/image";
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ProjectIdeaRocketImg from "@/app/assets/images/rocket.svg";
 import ProjectIdeaVerifiedImg from "@/app/assets/images/verified.svg";
 import Button from "@/app/shared/Button";
+gsap.registerPlugin(ScrollTrigger);
 
 const ProjectIdeaSection = ({ createRef }) => {
   let rocket = useRef("");
@@ -37,11 +38,39 @@ const ProjectIdeaSection = ({ createRef }) => {
       []
     );
   });
+
+  const mainDivRef = useRef(null);
+
+  useEffect(() => {
+    const mainDiv = mainDivRef.current;
+
+    gsap.fromTo(
+      mainDiv,
+      {
+        scale: 0,
+        opacity: 0,
+      },
+      {
+        scale: 1,
+        opacity: 1,
+        duration: 2,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: mainDiv,
+          start: "top 80%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+  }, []);
   return (
     <div className="main-layout-container " ref={(e) => createRef(e, 4)}>
       <div className="container px-4 mx-auto">
         <div className="flex items-center justify-center flex-col">
-          <div className="bg-project-idea-laptop  md:h-[410px] sm:h-[220px] h-[200px] md:w-[600px] sm:w-[350px] w-[300px] relative">
+          <div
+            className="bg-project-idea-laptop  md:h-[410px] sm:h-[220px] h-[200px] md:w-[600px] sm:w-[350px] w-[300px] relative main-div"
+            ref={mainDivRef}
+          >
             <Image
               alt="rocket-img"
               src={ProjectIdeaRocketImg}

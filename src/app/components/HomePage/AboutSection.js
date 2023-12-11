@@ -1,19 +1,74 @@
 import Image from "next/image";
-import React from "react";
-
+import React, { useEffect } from "react";
+import { gsap } from "gsap";
 import AboutLogo from "@/app/assets/images/about-img.svg";
 import AboutTextImg from "@/app/assets/images/about-text.svg";
 import RightCircle from "@/app/assets/images/right-circle.png";
 import Button from "@/app/shared/Button";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const AboutSections = ({ createRef }) => {
+  useEffect(() => {
+    const initialAnimation = gsap.timeline();
+    initialAnimation.from(".right-circle", {
+      x: "100%",
+      opacity: 0,
+      duration: 3,
+      ease: "power2.out",
+    });
+
+    ScrollTrigger.create({
+      trigger: ".right-circle",
+      start: "top bottom",
+      end: "bottom top",
+      onEnter: () => {
+        const tl = gsap.timeline();
+        tl.to(".right-circle", {
+          x: "0%",
+          opacity: 1,
+          duration: 3,
+          ease: "power4.out",
+        });
+      },
+      onLeaveBack: () => {
+        const tl = gsap.timeline();
+        tl.to(".right-circle", {
+          x: "100%",
+          opacity: 0,
+          duration: 3,
+          ease: "power4.out",
+        });
+      },
+      onEnterBack: () => {
+        const tl = gsap.timeline();
+        tl.to(".right-circle", {
+          x: "0%",
+          opacity: 1,
+          duration: 3,
+          ease: "power4.out",
+        });
+      },
+      onLeave: () => {
+        const tl = gsap.timeline();
+        tl.to(".right-circle", {
+          x: "100%",
+          opacity: 0,
+          duration: 3,
+          ease: "power4.out",
+        });
+      },
+      toggleActions: "play none none none",
+    });
+  }, []);
   return (
     <div className="panel main-layout-container " ref={(e) => createRef(e, 1)}>
       <div className="absolute h-full w-full top-0 right-0">
         <Image
           src={RightCircle}
           alt="about-right-circle"
-          className=" hidden lg:block h-[100%] 2xl:h-[100%] z-[-10px] absolute right-0 w-max lg:rotate-0 rotate-90"
+          className=" h-[100%] 2xl:h-[100%] z-[-10px] absolute right-0 w-max lg:rotate-0 rotate-90 right-circle"
         />
       </div>
       <div className="container px-4 mx-auto z-10">
