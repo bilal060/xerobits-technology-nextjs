@@ -1,83 +1,23 @@
 import Image from "next/image";
 import React, { useEffect } from "react";
 import { BsCircleFill } from "react-icons/bs";
-import { gsap } from "gsap";
+
 import WHyUsImage from "@/app/assets/images/why-us-img.svg";
 import BottomCircle from "@/app/assets/images/bottom-circle.png";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { animateSectionBottmToTop } from "@/app/helpers/GsapAnimations";
 
-gsap.registerPlugin(ScrollTrigger);
-
-const WhyChooseUs = ({ createRef }) => {
-  // useEffect(() => {
-  //   gsap.from(".bottom-circle", {
-  //     y: "-100%",
-  //     opacity: 0,
-  //     duration: 2,
-  //     ease: "power4.out",
-  //     scrollTrigger: {
-  //       trigger: ".bottom-circle",
-  //       start: "top 80%",
-  //       end: "bottom top", // Adjust the end trigger to ensure it re-triggers when scrolling back up
-  //       toggleActions: "play none none reverse",
-  //     },
-  //   });
-  // });
-
+const WhyChooseUs = ({ createRef, activeSection }) => {
   useEffect(() => {
-    const initialAnimation = gsap.timeline();
-    initialAnimation.from(".bottom-circle", {
-      y: "-100%",
-      opacity: 0,
-      duration: 2,
-      ease: "power2.out",
-    });
+    if (activeSection === "whyus-section") {
+      animateSectionBottmToTop(".bottom-circle", "power2.out");
+    }
+  }, [activeSection]);
 
-    ScrollTrigger.create({
-      trigger: ".bottom-circle",
-      start: "top bottom",
-      end: "bottom top",
-      onEnter: () => {
-        const tl = gsap.timeline();
-        tl.to(".bottom-circle", {
-          y: "0%",
-          opacity: 1,
-          duration: 2,
-          ease: "power4.out",
-        });
-      },
-      onLeaveBack: () => {
-        const tl = gsap.timeline();
-        tl.to(".bottom-circle", {
-          y: "100%",
-          opacity: 0,
-          duration: 2,
-          ease: "power4.out",
-        });
-      },
-      onEnterBack: () => {
-        const tl = gsap.timeline();
-        tl.to(".bottom-circle", {
-          y: "0%",
-          opacity: 1,
-          duration: 2,
-          ease: "power4.out",
-        });
-      },
-      onLeave: () => {
-        const tl = gsap.timeline();
-        tl.to(".bottom-circle", {
-          y: "100%",
-          opacity: 0,
-          duration: 2,
-          ease: "power4.out",
-        });
-      },
-      toggleActions: "play none none none",
-    });
-  }, []);
   return (
-    <div className="main-layout-container" ref={(e) => createRef(e, 3)}>
+    <div
+      className="panel main-layout-container whyus-section-container"
+      ref={createRef}
+    >
       <div className="absolute bottom-0 z-[-10px] w-full opacity-50 lg:opacity-100">
         <Image
           src={BottomCircle}

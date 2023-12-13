@@ -1,11 +1,12 @@
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 import { FaAngleRight } from "react-icons/fa";
 
 import BlogImg1 from "@/app/assets/images/blog-img-1.png";
 import BlogImg2 from "@/app/assets/images/blog-img-2.png";
 import BlogImg3 from "@/app/assets/images/blog-img-3.png";
 import Button from "@/app/shared/Button";
+import { textRevealAnimation } from "@/app/helpers/GsapAnimations";
 
 const blogs = [
   {
@@ -30,9 +31,17 @@ const blogs = [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec vulputate lectus, in accumsan leo. Aliquam tempor orci sed ex facilisis vestibulum.",
   },
 ];
-const BlogSection = ({ createRef }) => {
+const BlogSection = ({ createRef, activeSection }) => {
+  useEffect(() => {
+    if (activeSection == "blog-section") {
+      textRevealAnimation(".btn-blogs");
+    }
+  }, [activeSection]);
   return (
-    <div className="main-layout-container blogs" ref={(e) => createRef(e, 6)}>
+    <div
+      className="panel main-layout-container blogs blog-section-container"
+      ref={createRef}
+    >
       <div className="container mx-auto px-4">
         <h3 className="text-48px text-lightGray">read our latest blogs</h3>
         <p className="text-18px my-2 lg:my-4 lg:w-[817px] mx-auto text-center  text-lightGray leading-5">
@@ -73,7 +82,7 @@ const BlogSection = ({ createRef }) => {
             ))}
         </div>
         <div className="flex justify-center items-center 2xl:mt-8 mt-6">
-          <Button className="md-btn" type="green" text="View More" />
+          <Button className="md-btn btn-blogs" type="green" text="View More" />
         </div>
       </div>
     </div>

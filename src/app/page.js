@@ -2,8 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { debounce } from "lodash";
-import "@/app/assets/css/button.css";
+
 import WhyChooseUs from "./components/HomePage/WhyChooseUs";
 import AboutSections from "./components/HomePage/AboutSection";
 import HeroSection from "./components/HomePage/HeroSection";
@@ -13,98 +12,127 @@ import ClientsSection from "./components/HomePage/ClientsSection";
 import BlogSection from "./components/HomePage/BlogSection";
 import ContactForm from "./components/HomePage/ContactForm";
 import "@/app/assets/css/landing.css";
+import "@/app/assets/css/button.css";
 
+// Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
 const HomePage = () => {
-  const panels = useRef([]);
-  const panelsContainer = useRef();
-  const [loading, setLoading] = useState(true);
-
-  const createPanelsRefs = (panel, index) => {
-    panels.current[index] = panel;
+  const containerRef = useRef(null);
+  const sectionRefs = {
+    heroSection: useRef(null),
+    aboutUs: useRef(null),
+    services: useRef(null),
+    whyChooseUs: useRef(null),
+    clientSection: useRef(null),
+    projectIdea: useRef(null),
+    contact: useRef(null),
+    blogSection: useRef(null),
   };
 
-  const handleScroll = debounce(() => {
-    panels.current.forEach((panel, i) => {
-      const offsetTop = panel.offsetTop;
-      const offsetHeight = panel.offsetHeight;
-      const scrollY = window.scrollY;
+  const {
+    heroSection,
+    aboutUs,
+    services,
+    whyChooseUs,
+    clientSection,
+    projectIdea,
+    contact,
+    blogSection,
+  } = sectionRefs;
 
-      if (
-        scrollY > offsetTop - window.innerHeight / 2 &&
-        scrollY < offsetTop + offsetHeight / 2
-      ) {
-        gsap.to(panel, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" });
-      }
-    });
-  }, 200);
+  const [activePanel, setActivePanel] = useState(null);
 
   useEffect(() => {
-    let tops = panels.current.map((panel) =>
-      ScrollTrigger.create({ trigger: panel, start: "top 100px" })
-    );
-    panels.current.forEach((panel, i) => {
-      ScrollTrigger.create({
-        trigger: panel,
-        start: () =>
-          panel.offsetHeight < window.innerHeight ? "top top" : "bottom bottom",
-        pin: true,
-        pinSpacing: false,
-      });
+    const panels = [
+      heroSection,
+      aboutUs,
+      services,
+      whyChooseUs,
+      clientSection,
+      projectIdea,
+      contact,
+      blogSection,
+    ];
 
-      // Add GSAP ScrollTrigger animations
-      ScrollTrigger.create({
-        trigger: panel,
-        start: "top 50%",
-        end: "bottom 50%",
-        scrub: true,
-        animation: gsap.to(panel, {
-          opacity: 1,
-          y: 0,
-          duration: 0.4,
-          ease: "power3.out",
-        }),
-      });
-    });
-    ScrollTrigger.create({
-      snap: {
-        snapTo: (progress, self) => {
-          let panelStarts = tops.map((st) => st.start),
-            snapScroll = gsap.utils.snap(panelStarts, self.scroll());
-          return gsap.utils.normalize(
-            0,
-            ScrollTrigger.maxScroll(window),
-            snapScroll
-          );
-        },
-        duration: 0.1, // Adjust the duration
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry, index) => {
+          if (entry.isIntersecting) {
+            setActivePanelName(entry.target.className);
+          }
+        });
       },
+      {
+        root: containerRef.current,
+        threshold: 0.5,
+      }
+    );
+
+    panels.forEach((panelRef) => {
+      observer.observe(panelRef.current);
     });
 
-    // Set up event listener for scroll
+    // Function to handle scroll events
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const containerRect = containerRef.current.getBoundingClientRect();
+
+      // Calculate which panel is in view based on scroll position and container bounding rect
+      const inViewIndex = panels.findIndex((panelRef) => {
+        const panelRect = panelRef.current.getBoundingClientRect();
+        return (
+          panelRect.top >= containerRect.top &&
+          panelRect.bottom <= containerRect.bottom
+        );
+      });
+
+      if (inViewIndex !== -1) {
+        setActivePanel(inViewIndex);
+      }
+    };
+
+    // Attach scroll event listener
     window.addEventListener("scroll", handleScroll);
 
-    // Set loading to false once the animations are initialized
-    setLoading(false);
-
-    // Cleanup event listener on component unmount
     return () => {
+      // Clean up the observer and scroll
+      observer.disconnect();
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [handleScroll]);
+  }, []);
+
+  function setActivePanelName(panel) {
+    const panelNameMappings = {
+      "hero-section": "hero-section",
+      "about-section-container": "about-section",
+      "services-section-container": "services-section",
+      "whyus-section-container": "whyus-section",
+      "blog-section-container": "blog-section",
+      "projectidea-section-container": "projectidea-section",
+      "contact-section-container": "contact-section",
+      "client-section-container": "client-section",
+    };
+
+    const matchedPanel = Object.entries(panelNameMappings).find(
+      ([key, value]) => panel.includes(key)
+    );
+
+    if (matchedPanel) {
+      setActivePanel(matchedPanel[1]);
+    }
+  }
 
   return (
-    <div ref={panelsContainer}>
-      {loading && <div className="">Loading...</div>}
-      <HeroSection createRef={createPanelsRefs} />
-      <AboutSections createRef={createPanelsRefs} />
-      <ServicesSections createRef={createPanelsRefs} />
-      <WhyChooseUs createRef={createPanelsRefs} />
-      <ProjectIdeaSection createRef={createPanelsRefs} />
-      <ClientsSection createRef={createPanelsRefs} />
-      <BlogSection createRef={createPanelsRefs} />
-      <ContactForm createRef={createPanelsRefs} />
+    <div ref={containerRef} className="container-home">
+      <HeroSection createRef={heroSection} activeSection={activePanel} />
+      <AboutSections createRef={aboutUs} activeSection={activePanel} />
+      <ServicesSections createRef={services} activeSection={activePanel} />
+      <WhyChooseUs createRef={whyChooseUs} activeSection={activePanel} />
+      <ProjectIdeaSection createRef={projectIdea} activeSection={activePanel} />
+      <ClientsSection createRef={clientSection} activeSection={activePanel} />
+      <BlogSection createRef={blogSection} activeSection={activePanel} />
+      <ContactForm createRef={contact} activeSection={activePanel} />
     </div>
   );
 };

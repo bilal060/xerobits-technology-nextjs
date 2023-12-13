@@ -1,124 +1,30 @@
 import Image from "next/image";
 import React, { useEffect } from "react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { gsap } from "gsap";
 
 import AboutLogo from "@/app/assets/images/about-img.svg";
 import AboutTextImg from "@/app/assets/images/about-text.svg";
 import RightCircle from "@/app/assets/images/right-circle.png";
 import Button from "@/app/shared/Button";
+import {
+  animateSectionLeftX,
+  animateSectionRightX,
+  textRevealAnimation,
+} from "@/app/helpers/GsapAnimations";
 
-gsap.registerPlugin(ScrollTrigger);
-
-const AboutSections = ({ createRef }) => {
+const AboutSections = ({ createRef, activeSection }) => {
   useEffect(() => {
-    // Right Circle Animation
-    const rightCircleAnimation = gsap.timeline();
-    rightCircleAnimation.from(".right-circle", {
-      x: "100%",
-      opacity: 0,
-      duration: 4,
-      ease: "power2.out",
-    });
-
-    ScrollTrigger.create({
-      trigger: ".right-circle",
-      start: "top bottom",
-      end: "bottom top",
-      onEnter: () => {
-        const tl = gsap.timeline();
-        tl.to(".right-circle", {
-          x: "0%",
-          opacity: 1,
-          duration: 3,
-          ease: "power4.out",
-        });
-      },
-      onLeaveBack: () => {
-        const tl = gsap.timeline();
-        tl.to(".right-circle", {
-          x: "100%",
-          opacity: 0,
-          duration: 3,
-          ease: "power4.out",
-        });
-      },
-      onEnterBack: () => {
-        const tl = gsap.timeline();
-        tl.to(".right-circle", {
-          x: "0%",
-          opacity: 1,
-          duration: 3,
-          ease: "power4.out",
-        });
-      },
-      onLeave: () => {
-        const tl = gsap.timeline();
-        tl.to(".right-circle", {
-          x: "100%",
-          opacity: 0,
-          duration: 3,
-          ease: "power4.out",
-        });
-      },
-      toggleActions: "play none none none",
-    });
-
-    // About Us Image Animation
-    const aboutUsImageAnimation = gsap.timeline();
-    aboutUsImageAnimation.from(".about-us-img", {
-      x: "-100%", // Slide in from the left
-      opacity: 0,
-      duration: 3,
-      ease: "power2.out",
-    });
-
-    ScrollTrigger.create({
-      trigger: ".about-us-img",
-      start: "top bottom",
-      end: "bottom top",
-      onEnter: () => {
-        const tl = gsap.timeline();
-        tl.to(".about-us-img", {
-          x: "0%",
-          opacity: 1,
-          duration: 3,
-          ease: "power4.out",
-        });
-      },
-      onLeaveBack: () => {
-        const tl = gsap.timeline();
-        tl.to(".about-us-img", {
-          x: "-100%",
-          opacity: 0,
-          duration: 3,
-          ease: "power4.out",
-        });
-      },
-      onEnterBack: () => {
-        const tl = gsap.timeline();
-        tl.to(".about-us-img", {
-          x: "0%",
-          opacity: 1,
-          duration: 3,
-          ease: "power4.out",
-        });
-      },
-      onLeave: () => {
-        const tl = gsap.timeline();
-        tl.to(".about-us-img", {
-          x: "100%",
-          opacity: 0,
-          duration: 3,
-          ease: "power4.out",
-        });
-      },
-      toggleActions: "play none none none",
-    });
-  }, []);
+    if (activeSection === "about-section") {
+      animateSectionRightX(".right-circle", "power2.out");
+      animateSectionLeftX(".about-us-img", "power2.out");
+      textRevealAnimation(".btn-about-us");
+    }
+  }, [activeSection]);
 
   return (
-    <div className="panel main-layout-container " ref={(e) => createRef(e, 1)}>
+    <div
+      className="panel main-layout-container about-section-container"
+      ref={createRef}
+    >
       <div className="absolute h-full w-full top-0 right-0 lg:opacity-100 opacity-40">
         <Image
           src={RightCircle}
@@ -160,7 +66,7 @@ const AboutSections = ({ createRef }) => {
                   competitive in today&apos;s fast-paced digital landscape.
                 </p>
                 <Button
-                  className="md-btn 2xl:mt-10"
+                  className="md-btn 2xl:mt-10 btn-about-us"
                   type="green"
                   text="Get Started Today"
                 />

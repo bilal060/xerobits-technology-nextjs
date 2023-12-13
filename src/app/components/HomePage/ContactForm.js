@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import Image from "next/image";
@@ -7,8 +7,14 @@ import Image from "next/image";
 import ContactImg from "@/app/assets/images/contact-img.png";
 import TextField from "@/app/shared/TextField";
 import Button from "@/app/shared/Button";
+import { textRevealAnimation } from "@/app/helpers/GsapAnimations";
 
-const ContactForm = ({ createRef }) => {
+const ContactForm = ({ createRef, activeSection }) => {
+  useEffect(() => {
+    if (activeSection == "contact-section") {
+      textRevealAnimation(".btn-contact");
+    }
+  }, [activeSection]);
   // Form Initial Values
   const initialValues = {
     name: "",
@@ -27,8 +33,8 @@ const ContactForm = ({ createRef }) => {
   };
   return (
     <div
-      className="main-layout-container contact-us"
-      ref={(e) => createRef(e, 7)}
+      className="panel main-layout-container contact-us contact-section-container"
+      ref={createRef}
     >
       <div className="container mx-auto px-4">
         <div className=" flex flex-col-reverse  mx-auto md:grid md:grid-cols-12  gap-4">
@@ -59,7 +65,7 @@ const ContactForm = ({ createRef }) => {
                       textarea="ture"
                     />
                     <Button
-                      className="md-btn xl:mt-[56px] lg:mt-[44px] md:mt-[36px] mt-3"
+                      className="md-btn xl:mt-[56px] lg:mt-[44px] md:mt-[36px] mt-3 btn-contact"
                       type="green"
                       text="Send Message"
                     />

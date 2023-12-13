@@ -1,73 +1,24 @@
 import Image from "next/image";
-import React, { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React, { useEffect } from "react";
+
 import CircleImg from "@/app/assets/images/circle.png";
 import HorizentalDots from "@/app/assets/images/horizental-dots.svg";
 import VerticalDots from "@/app/assets/images/vertical-dot.svg";
 import Button from "@/app/shared/Button";
+import { textRevealAnimation } from "@/app/helpers/GsapAnimations";
 
-gsap.registerPlugin(ScrollTrigger);
-
-const HeroSection = ({ createRef }) => {
+const HeroSection = ({ createRef, activeSection }) => {
   useEffect(() => {
-    const initialAnimation = gsap.timeline();
-    initialAnimation.from(".reveal-text", {
-      y: "100%",
-      opacity: 0,
-      duration: 1,
-      ease: "power2.out",
-    });
+    if (activeSection == "hero-section") {
+      textRevealAnimation(".reveal-text");
+    }
+  }, [activeSection]);
 
-    gsap.utils.toArray(".reveal-text").forEach((text) => {
-      ScrollTrigger.create({
-        trigger: text,
-        start: "top bottom",
-        end: "bottom top",
-        onEnter: () => {
-          const tl = gsap.timeline();
-          tl.to(text, {
-            y: "0%",
-            opacity: 1,
-            duration: 3,
-            ease: "power4.out",
-          });
-        },
-        onLeaveBack: () => {
-          const tl = gsap.timeline();
-          tl.to(text, {
-            y: "100%",
-            opacity: 0,
-            duration: 3,
-            ease: "power4.out",
-          });
-        },
-        onEnterBack: () => {
-          const tl = gsap.timeline();
-          tl.to(text, {
-            y: "0%",
-            opacity: 1,
-            duration: 3,
-            ease: "power4.out",
-          });
-        },
-        onLeave: () => {
-          const tl = gsap.timeline();
-          tl.to(text, {
-            y: "100%",
-            opacity: 0,
-            duration: 3,
-            ease: "power4.out",
-          });
-        },
-        toggleActions: "play none none none",
-      });
-    });
-  }, []);
   return (
     <div
-      className="panel main-layout-container mt-[75px] md:mt-[100px] hero-section"
-      ref={(e) => createRef(e, 0)}
+      className="panel main-layout-container hero-section hero-section-container"
+      id="hero-section-container"
+      ref={createRef}
     >
       <div className="hidden md:block absolute top-[calc(50%-50px)] dotted-square translate-y-[-50%] ">
         <Image

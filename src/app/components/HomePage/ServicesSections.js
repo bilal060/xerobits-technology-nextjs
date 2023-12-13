@@ -1,71 +1,24 @@
 "use client";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import ServicesText from "@/app/assets/images/services-text.png";
 import { servicesImagesData } from "../../../../ServicesImagesData.js";
 import Button from "@/app/shared/Button.js";
+import {
+  animateSectionRightX,
+  textRevealAnimation,
+} from "@/app/helpers/GsapAnimations.js";
 
-gsap.registerPlugin(ScrollTrigger);
-
-const ServicesSections = ({ createRef }) => {
+const ServicesSections = ({ createRef, activeSection }) => {
   const [imagePreviewId, setImagePreviewId] = useState(null);
 
   useEffect(() => {
-    // Services Image Animation
-    const aboutUsImageAnimation = gsap.timeline();
-    aboutUsImageAnimation.from(".services-img", {
-      x: "100%",
-      opacity: 0,
-      duration: 3,
-      ease: "power2.out",
-    });
-
-    ScrollTrigger.create({
-      trigger: ".services-img",
-      start: "top bottom",
-      end: "bottom top",
-      onEnter: () => {
-        const tl = gsap.timeline();
-        tl.to(".services-img", {
-          x: "0%",
-          opacity: 1,
-          duration: 3,
-          ease: "power4.out",
-        });
-      },
-      onLeaveBack: () => {
-        const tl = gsap.timeline();
-        tl.to(".services-img", {
-          x: "100%",
-          opacity: 0,
-          duration: 3,
-          ease: "power4.out",
-        });
-      },
-      onEnterBack: () => {
-        const tl = gsap.timeline();
-        tl.to(".services-img", {
-          x: "0%",
-          opacity: 1,
-          duration: 3,
-          ease: "power4.out",
-        });
-      },
-      onLeave: () => {
-        const tl = gsap.timeline();
-        tl.to(".services-img", {
-          x: "100%",
-          opacity: 0,
-          duration: 3,
-          ease: "power4.out",
-        });
-      },
-      toggleActions: "play none none none",
-    });
-  }, []);
+    if (activeSection === "services-section") {
+      animateSectionRightX(".services-img", "power2.out");
+      textRevealAnimation(".btn-services");
+    }
+  }, [activeSection]);
 
   // Changes Grid Layout based on Condition
   const changeGridLayout = (id) => {
@@ -81,8 +34,8 @@ const ServicesSections = ({ createRef }) => {
 
   return (
     <div
-      className="main-layout-container services"
-      ref={(e) => createRef(e, 2)}
+      className="panel main-layout-container services services-section-container"
+      ref={createRef}
     >
       <div className="container mx-auto z-10 px-4 h-full">
         <div className=" h-full  flex justify-center flex-col">
@@ -140,7 +93,11 @@ const ServicesSections = ({ createRef }) => {
             </div>
           </div>
           <div className="flex items-center mt-6 lg:mt-8 2xl:mt-12 justify-center">
-            <Button className="md-btn" type="green" text="View More" />
+            <Button
+              className="md-btn btn-services"
+              type="green"
+              text="View More"
+            />
           </div>
         </div>
       </div>

@@ -10,7 +10,7 @@ import Circle from "@/app/assets/images/circle.svg";
 import Button from "@/app/shared/Button";
 gsap.registerPlugin(ScrollTrigger);
 
-const ProjectIdeaSection = ({ createRef }) => {
+const ProjectIdeaSection = ({ createRef, activeSection }) => {
   let rocket = useRef("");
   let verified = useRef("");
   let xValue =
@@ -18,79 +18,88 @@ const ProjectIdeaSection = ({ createRef }) => {
   let yValue =
     typeof window !== "undefined" && window.innerWidth > 768 ? 200 : 120;
 
-  useEffect(() => {
-    gsap.to(
-      rocket.current,
-      {
-        duration: 3,
-        y: xValue,
-        yoyo: true,
-        repeat: -1,
-      },
-      []
-    );
-    gsap.to(
-      verified.current,
-      {
-        duration: 3,
-        x: yValue,
-        yoyo: true,
-        repeat: -1,
-      },
-      []
-    );
-  });
+  // useEffect(() => {
+  //   if (activeSection == "projectidea-section") {
+  //     gsap.to(
+  //       rocket.current,
+  //       {
+  //         duration: 3,
+  //         y: xValue,
+  //         yoyo: true,
+  //         repeat: -1,
+  //       },
+  //       []
+  //     );
+  //     gsap.to(
+  //       verified.current,
+  //       {
+  //         duration: 3,
+  //         x: yValue,
+  //         yoyo: true,
+  //         repeat: -1,
+  //       },
+  //       []
+  //     );
+  //   }
+  // }, [activeSection]);
 
   const mainDivRef = useRef(null);
 
-  useEffect(() => {
-    const mainDiv = mainDivRef.current;
+  // useEffect(() => {
+  //   if (activeSection == "projectidea-section") {
+  //     const mainDiv = mainDivRef.current;
 
-    gsap.fromTo(
-      mainDiv,
-      {
-        scale: 0,
-        opacity: 0,
-      },
-      {
-        scale: 1,
-        opacity: 1,
-        duration: 2,    
-        ease: "power4.out",
-        scrollTrigger: {
-          trigger: mainDiv,
-          start: "top 80%",
-          toggleActions: "play none none reverse",
-        },
-      }
-    );
-  }, []);
+  //     gsap.fromTo(
+  //       mainDiv,
+  //       {
+  //         scale: 0,
+  //         opacity: 0,
+  //       },
+  //       {
+  //         scale: 1,
+  //         opacity: 1,
+  //         duration: 2,
+  //         ease: "power4.out",
+  //         scrollTrigger: {
+  //           trigger: mainDiv,
+  //           start: "top 80%",
+  //           toggleActions: "play none none reverse",
+  //         },
+  //       }
+  //     );
+  //   }
+  // }, [activeSection]);
 
   const circleRef = useRef(null);
-  useEffect(() => {
-    const circle = circleRef.current;
+  // useEffect(() => {
+  //   if (activeSection == "projectidea-section") {
+  //   }
+  //   const circle = circleRef.current;
 
-    gsap.fromTo(
-      circle,
-      {
-        scale: 2,
-        opacity: 0,
-      },
-      {
-        scale: 1,
-        opacity: 1,
-        duration: 2,
-        ease: "power4.out",
-        scrollTrigger: {
-          trigger: circle,
-          start: "top 80%",
-          toggleActions: "play none none reverse",
-        },
-      }
-    );
-  }, []);
+  //   gsap.fromTo(
+  //     circle,
+  //     {
+  //       scale: 2,
+  //       opacity: 0,
+  //     },
+  //     {
+  //       scale: 1,
+  //       opacity: 1,
+  //       duration: 2,
+  //       ease: "power4.out",
+  //       scrollTrigger: {
+  //         trigger: circle,
+  //         start: "top 80%",
+  //         toggleActions: "play none none none",
+  //       },
+  //     }
+  //   );
+  // }, [activeSection]);
   return (
-    <div className="main-layout-container " ref={(e) => createRef(e, 4)}>
+    <div
+      className="panel main-layout-container projectidea-section-container"
+      ref={createRef}
+    >
       <div className="container px-4 mx-auto">
         <div className="flex items-center justify-center flex-col relative">
           <Image
