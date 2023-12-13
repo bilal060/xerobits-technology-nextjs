@@ -34,7 +34,7 @@ const AboutSections = ({ createRef, activeSection }) => {
       </div>
       <div className="container px-4 mx-auto z-10">
         <div className="flex flex-col-reverse lg:grid md:grid-cols-12  gap-4 z-10">
-          <div className="flex lg:col-span-9 xl:col-span-8 2xl:col-span-9  flex-col justify-center z-10">
+          <div className="flex lg:col-span-9 flex-col justify-center z-10">
             <div className="flex md:flex-row flex-col md:items-center items-start h-full md:gap-8 sm:gap-4 gap-2">
               <Image
                 src={AboutTextImg}
@@ -73,7 +73,7 @@ const AboutSections = ({ createRef, activeSection }) => {
               </div>
             </div>
           </div>
-          <div className="flex lg:col-span-3 xl:col-span-4 2xl:col-span-3  items-center justify-center w-full z-10">
+          <div className="flex lg:col-span-3 items-center justify-center w-full z-10">
             <Image
               src={AboutLogo}
               alt="about-section-img"

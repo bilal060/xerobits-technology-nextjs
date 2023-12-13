@@ -120,3 +120,33 @@ function playTextRevealAnimation(animation, yValue, opacity, duration) {
     ease: "power4.out",
   });
 }
+
+export const animateElementXY = (element, duration, properties) => {
+  gsap.to(element, {
+    duration: duration,
+    ...properties,
+    yoyo: true,
+    repeat: -1,
+  });
+};
+
+export const zoomAnimation = (ref, scaleFrom, scaleTo) => {
+  gsap.fromTo(
+    ref,
+    {
+      scale: scaleFrom,
+      opacity: 0,
+    },
+    {
+      scale: scaleTo,
+      opacity: 1,
+      duration: 2,
+      ease: "power4.out",
+      scrollTrigger: {
+        trigger: ref,
+        start: "top 80%",
+        toggleActions: "play none none none",
+      },
+    }
+  );
+};

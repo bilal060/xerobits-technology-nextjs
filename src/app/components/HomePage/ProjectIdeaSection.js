@@ -8,93 +8,50 @@ import ProjectIdeaVerifiedImg from "@/app/assets/images/verified.svg";
 import Circle from "@/app/assets/images/circle.svg";
 
 import Button from "@/app/shared/Button";
+import { animateElementXY, zoomAnimation } from "@/app/helpers/GsapAnimations";
 gsap.registerPlugin(ScrollTrigger);
 
 const ProjectIdeaSection = ({ createRef, activeSection }) => {
   let rocket = useRef("");
   let verified = useRef("");
-  let xValue =
-    typeof window !== "undefined" && window.innerWidth > 768 ? 200 : 120;
-  let yValue =
-    typeof window !== "undefined" && window.innerWidth > 768 ? 200 : 120;
-
-  // useEffect(() => {
-  //   if (activeSection == "projectidea-section") {
-  //     gsap.to(
-  //       rocket.current,
-  //       {
-  //         duration: 3,
-  //         y: xValue,
-  //         yoyo: true,
-  //         repeat: -1,
-  //       },
-  //       []
-  //     );
-  //     gsap.to(
-  //       verified.current,
-  //       {
-  //         duration: 3,
-  //         x: yValue,
-  //         yoyo: true,
-  //         repeat: -1,
-  //       },
-  //       []
-  //     );
-  //   }
-  // }, [activeSection]);
-
+  const circleRef = useRef(null);
   const mainDivRef = useRef(null);
 
-  // useEffect(() => {
-  //   if (activeSection == "projectidea-section") {
-  //     const mainDiv = mainDivRef.current;
+  const rocketAnimationProps = {
+    y: typeof window !== "undefined" && window.innerWidth > 768 ? 150 : 120,
+  };
 
-  //     gsap.fromTo(
-  //       mainDiv,
-  //       {
-  //         scale: 0,
-  //         opacity: 0,
-  //       },
-  //       {
-  //         scale: 1,
-  //         opacity: 1,
-  //         duration: 2,
-  //         ease: "power4.out",
-  //         scrollTrigger: {
-  //           trigger: mainDiv,
-  //           start: "top 80%",
-  //           toggleActions: "play none none reverse",
-  //         },
-  //       }
-  //     );
-  //   }
-  // }, [activeSection]);
+  const verifiedAnimationProps = {
+    x: typeof window !== "undefined" && window.innerWidth > 768 ? 150 : 120,
+  };
 
-  const circleRef = useRef(null);
-  // useEffect(() => {
-  //   if (activeSection == "projectidea-section") {
-  //   }
-  //   const circle = circleRef.current;
+  useEffect(() => {
+    if (activeSection == "projectidea-section") {
+      animateElementXY(rocket.current, 3, rocketAnimationProps);
+      animateElementXY(verified.current, 3, verifiedAnimationProps);
+      // zoomAnimation(mainDivRef.current, 0, 1);
+      // zoomAnimation(circleRef.current, 2, 1);
+      // gsap.fromTo(
+      //   mainDivRef.current,
+      //   {
+      //     scale: 0,
+      //     opacity: 0,
+      //   },
+      //   {
+      //     scale: 1,
+      //     opacity: 1,
+      //     duration: 2,
+      //     ease: "power4.out",
+      //     scrollTrigger: {
+      //       trigger: mainDivRef.current,
+      //       start: "top 80%",
+      //       toggleActions: "play none none none",
+      //     },
+      //   }
+      // );
+    }
+  }, [activeSection]);
 
-  //   gsap.fromTo(
-  //     circle,
-  //     {
-  //       scale: 2,
-  //       opacity: 0,
-  //     },
-  //     {
-  //       scale: 1,
-  //       opacity: 1,
-  //       duration: 2,
-  //       ease: "power4.out",
-  //       scrollTrigger: {
-  //         trigger: circle,
-  //         start: "top 80%",
-  //         toggleActions: "play none none none",
-  //       },
-  //     }
-  //   );
-  // }, [activeSection]);
   return (
     <div
       className="panel main-layout-container projectidea-section-container"
