@@ -11,7 +11,7 @@ const ClientsSection = ({ createRef }) => {
     >
       <div className="container px-4 mx-auto">
         <div className="w-full  flex flex-col justify-center ">
-          <h3 className="text-[30px] md:text-[36px] lg:text-[48px]  capitalize text-center font-bold font-tripsans lg:leading-[64px] text-lightGray">
+          <h3 className="text-[30px] md:text-[36px] lg:text-[48px] capitalize text-center font-bold font-tripsans lg:leading-[64px] text-lightGray">
             what our clients say about us!
           </h3>
           <p className="text-[18px] my-2 lg:my-4 lg:w-[817px] mx-auto text-center  font-normal font-tripsans text-lightGray leading-5">

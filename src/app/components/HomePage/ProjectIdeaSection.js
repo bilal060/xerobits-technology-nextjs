@@ -5,50 +5,58 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ProjectIdeaRocketImg from "@/app/assets/images/rocket.svg";
 import ProjectIdeaVerifiedImg from "@/app/assets/images/verified.svg";
-import Circle from "@/app/assets/images/circle.svg";
+import Circle from "@/app/assets/images/circlefull.png";
 
 import Button from "@/app/shared/Button";
-import { animateElementXY, zoomAnimation } from "@/app/helpers/GsapAnimations";
+import { zoomAnimation } from "@/app/helpers/GsapAnimations";
 gsap.registerPlugin(ScrollTrigger);
 
 const ProjectIdeaSection = ({ createRef, activeSection }) => {
-  let rocket = useRef("");
-  let verified = useRef("");
-  const circleRef = useRef(null);
   const mainDivRef = useRef(null);
-
-  const rocketAnimationProps = {
-    y: typeof window !== "undefined" && window.innerWidth > 768 ? 150 : 120,
-  };
-
-  const verifiedAnimationProps = {
-    x: typeof window !== "undefined" && window.innerWidth > 768 ? 150 : 120,
-  };
+  const circleRef = useRef(null);
 
   useEffect(() => {
     if (activeSection == "projectidea-section") {
-      animateElementXY(rocket.current, 3, rocketAnimationProps);
-      animateElementXY(verified.current, 3, verifiedAnimationProps);
-      // zoomAnimation(mainDivRef.current, 0, 1);
-      // zoomAnimation(circleRef.current, 2, 1);
-      // gsap.fromTo(
-      //   mainDivRef.current,
-      //   {
-      //     scale: 0,
-      //     opacity: 0,
-      //   },
-      //   {
-      //     scale: 1,
-      //     opacity: 1,
-      //     duration: 2,
-      //     ease: "power4.out",
-      //     scrollTrigger: {
-      //       trigger: mainDivRef.current,
-      //       start: "top 80%",
-      //       toggleActions: "play none none none",
-      //     },
-      //   }
-      // );
+      const mainDiv = mainDivRef.current;
+      const circleImage = circleRef.current;
+
+      ScrollTrigger.create({
+        trigger: mainDiv,
+        start: "top 80%",
+        end: "bottom 20%",
+        onEnter: () => {
+          zoomAnimation(mainDiv, 1, 1, 1, 1);
+        },
+        onLeaveBack: () => {
+          zoomAnimation(mainDiv, 0, 1, 0, 1);
+        },
+        onEnterBack: () => {
+          zoomAnimation(mainDiv, 1, 0, 1, 0);
+        },
+        onLeave: () => {
+          zoomAnimation(mainDiv, 0, 1, 0, 1);
+        },
+        toggleActions: "play none none none",
+      });
+
+      ScrollTrigger.create({
+        trigger: circleImage,
+        start: "top 80%",
+        end: "bottom 20%",
+        onEnter: () => {
+          zoomAnimation(circleImage, 2, 1, 1, 1);
+        },
+        onLeaveBack: () => {
+          zoomAnimation(circleImage, 2, 1, 1, 1);
+        },
+        onEnterBack: () => {
+          zoomAnimation(circleImage, 2, 1, 1, 1);
+        },
+        onLeave: () => {
+          zoomAnimation(circleImage, 2, 1, 1, 1);
+        },
+        toggleActions: "play none none none",
+      });
     }
   }, [activeSection]);
 
@@ -60,26 +68,24 @@ const ProjectIdeaSection = ({ createRef, activeSection }) => {
       <div className="container px-4 mx-auto">
         <div className="flex items-center justify-center flex-col relative">
           <Image
-            ref={circleRef}
-            alt="rocket-img"
+            alt="circle-img"
             src={Circle}
-            className="lg:block hidden absolute lg:h-[500px] 2xl:h-[750px] lg:-top-20 2xl:-top-[6rem]"
+            ref={circleRef}
+            className="lg:block hidden absolute lg:h-[500px] 2xl:h-[750px] lg:-top-20 2xl:-top-[6rem] 2xl:w-[70%] xl:w-[60%] w-[70%]"
           />
           <div
-            className="bg-project-idea-laptop 2xl:h-[410px] md:h-[260px] md:w-[450px] sm:h-[220px] h-[200px] 2xl:w-[600px] sm:w-[350px] w-[300px] relative main-div"
             ref={mainDivRef}
+            className="bg-project-idea-laptop 2xl:h-[410px] md:h-[260px] md:w-[450px] sm:h-[220px] h-[200px] 2xl:w-[600px] sm:w-[350px] w-[300px] relative main-div"
           >
             <Image
               alt="rocket-img"
               src={ProjectIdeaRocketImg}
-              ref={rocket}
-              className="absolute right-0 2xl:h-[120px] md:w-[120px] h-[60px] w-[60px]"
+              className="absolute right-0 2xl:h-[120px] md:w-[120px] h-[60px] w-[60px] rocket-img"
             />
             <Image
               alt="main-img"
-              className="absolute bottom-0 2xl:h-[120px] md:w-[120px] h-[60px] w-[60px]"
+              className="absolute bottom-0 2xl:h-[120px] md:w-[120px] h-[60px] w-[60px] verified-img"
               src={ProjectIdeaVerifiedImg}
-              ref={verified}
             />
           </div>
           <h3 className=" text-lightGray text-56px capitalize">

@@ -127,25 +127,32 @@ export const animateElementXY = (element, duration, properties) => {
     ...properties,
     yoyo: true,
     repeat: -1,
+    ease: "power1.inOut",
   });
 };
 
-export const zoomAnimation = (ref, scaleFrom, scaleTo) => {
+export const zoomAnimation = (
+  ref,
+  scaleFrom,
+  scaleTo,
+  opacityFrom,
+  opacityTo
+) => {
   gsap.fromTo(
     ref,
     {
       scale: scaleFrom,
-      opacity: 0,
+      opacity: opacityFrom,
     },
     {
       scale: scaleTo,
-      opacity: 1,
+      opacity: opacityTo,
       duration: 2,
       ease: "power4.out",
       scrollTrigger: {
         trigger: ref,
         start: "top 80%",
-        toggleActions: "play none none none",
+        toggleActions: "play none none reverse",
       },
     }
   );

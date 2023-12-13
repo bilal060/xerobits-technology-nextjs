@@ -114,23 +114,19 @@ body {
 }
 
 .services {
-  background: linear-gradient(
-    45deg,
-    #077151 0.3%,
-    rgba(7, 113, 81, 0.5) 0%,
-    rgba(7, 113, 81, 0) 25.75%,
-    rgba(7, 113, 81, 0) 2.75%
-  );
+  background: linear-gradient(45deg,
+      #077151 0.3%,
+      rgba(7, 113, 81, 0.5) 0%,
+      rgba(7, 113, 81, 0) 25.75%,
+      rgba(7, 113, 81, 0) 2.75%);
 }
 
 .blogs {
-  background: linear-gradient(
-    320deg,
-    #077151 0.3%,
-    rgba(7, 113, 81, 0.5) 0%,
-    rgba(7, 113, 81, 0) 20.75%,
-    rgba(7, 113, 81, 0) 2.75%
-  );
+  background: linear-gradient(320deg,
+      #077151 0.3%,
+      rgba(7, 113, 81, 0.5) 0%,
+      rgba(7, 113, 81, 0) 20.75%,
+      rgba(7, 113, 81, 0) 2.75%);
 }
 
 .bg-project-idea-laptop {
@@ -192,6 +188,35 @@ body {
   background-size: contain;
 }
 
+.rocket-img {
+  animation: slideYAnimation 3s ease-in-out infinite alternate;
+}
+
+.verified-img {
+  animation: slideXAnimation 3s ease-in-out infinite alternate;
+}
+
+@keyframes slideXAnimation {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(120px);
+  }
+}
+
+@keyframes slideYAnimation {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(120px);
+  }
+}
+
+
 /* Hide scrollbar for Chrome, Safari and Opera */
 /* body::-webkit-scrollbar {
   display: none;
@@ -206,6 +231,18 @@ body {
 
 .transition {
   transition: all 1s ease !important;
+}
+
+.container-home {
+  max-height: calc(100vh - 100px);
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  margin-top: 100px;
+}
+
+.panel {
+  scroll-snap-align: start;
+  height: calc(100vh - 100px);
 }
 
 @media (min-width: 1024px) {
@@ -227,6 +264,26 @@ body {
 }
 
 @media (min-width: 768px) {
+  @keyframes slideXAnimation {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(150px);
+    }
+  }
+
+  @keyframes slideYAnimation {
+    0% {
+      transform: translateY(0);
+    }
+
+    100% {
+      transform: translateY(150px);
+    }
+  }
+
   .hero-section:before {
     content: " ";
     display: block;
@@ -255,16 +312,4 @@ body {
   .home-rectangle-bg {
     width: 70%;
   }
-}
-
-.container-home {
-  max-height: calc(100vh - 100px);
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
-  margin-top: 100px;
-}
-
-.panel {
-  scroll-snap-align: start;
-  height: calc(100vh - 100px);
 }

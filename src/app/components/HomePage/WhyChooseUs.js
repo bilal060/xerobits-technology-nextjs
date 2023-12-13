@@ -18,7 +18,7 @@ const WhyChooseUs = ({ createRef, activeSection }) => {
       className="panel main-layout-container whyus-section-container"
       ref={createRef}
     >
-      <div className="absolute bottom-0 z-[-10px] w-full opacity-50 lg:opacity-100">
+      <div className="absolute bottom-0 z-[-10px] w-full opacity-50 lg:opacity-100 ">
         <Image
           src={BottomCircle}
           alt="circle"
