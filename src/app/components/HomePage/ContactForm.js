@@ -1,18 +1,45 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import Image from "next/image";
-
+import CircleRightImg from "@/app/assets/images/circle-top.png";
 import ContactImg from "@/app/assets/images/contact-img.png";
 import TextField from "@/app/shared/TextField";
 import Button from "@/app/shared/Button";
-import { textRevealAnimation } from "@/app/helpers/GsapAnimations";
+import { gsap } from "gsap";
+import {
+  zoomAnimationFunction,
+  textRevealAnimation,
+} from "@/app/helpers/GsapAnimations";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const ContactForm = ({ createRef, activeSection }) => {
+  const circleImageRef = useRef(null);
   useEffect(() => {
     if (activeSection == "contact-section") {
       textRevealAnimation(".btn-contact");
+      ScrollTrigger.create({
+        trigger: circleImageRef.current,
+        start: "top 80%",
+        end: "bottom 20%",
+        onEnter: () => {
+          zoomAnimationFunction(circleImageRef.current, 5, 1, 1, 1);
+        },
+        onLeaveBack: () => {
+          zoomAnimationFunction(circleImageRef.current, 5, 1, 1, 1);
+        },
+        onEnterBack: () => {
+          zoomAnimationFunction(circleImageRef.current, 5, 1, 1, 1);
+        },
+        onLeave: () => {
+          zoomAnimationFunction(circleImageRef.current, 5, 1, 1, 1);
+        },
+        toggleActions: "play none none none",
+      });
+      // animateSectionRightX(".about-image", "power2.out");
     }
   }, [activeSection]);
   // Form Initial Values
@@ -36,6 +63,14 @@ const ContactForm = ({ createRef, activeSection }) => {
       className="panel main-layout-container contact-us contact-section-container"
       ref={createRef}
     >
+      <div className="absolute top-0 right-0 xs:opacity-100 opacity-30">
+        <Image
+          src={CircleRightImg}
+          alt="HorizentalDots"
+          className="w-full h-full about-image"
+          ref={circleImageRef}
+        />
+      </div>
       <div className="container mx-auto px-4">
         <div className=" flex flex-col-reverse  mx-auto md:grid md:grid-cols-12  gap-4">
           <div className="flex md:col-span-8 lg:col-span-6 mt-4 lg:mt-12 flex-col  z-10">
@@ -78,7 +113,7 @@ const ContactForm = ({ createRef, activeSection }) => {
             <Image
               src={ContactImg}
               alt="about-text"
-              className="w-full max-w-[400px] h-[300px] md:w-full md:h-[350px] lg:max-w-[500px] lg:h-[400px] z-[-10px] "
+              className="w-full max-w-[400px] h-[300px] md:w-full md:h-[350px] lg:max-w-[500px] lg:h-[400px] z-[-10px]"
             />
           </div>
         </div>

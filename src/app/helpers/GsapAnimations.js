@@ -131,7 +131,47 @@ export const animateElementXY = (element, duration, properties) => {
   });
 };
 
-export const zoomAnimation = (
+export const zoomInAnimation = (ref) => {
+  ScrollTrigger.create({
+    trigger: ref,
+    start: "top 80%",
+    end: "bottom 20%",
+    onEnter: () => {
+      zoomAnimationFunction(ref, 1, 1, 1, 1);
+    },
+    onLeaveBack: () => {
+      zoomAnimationFunction(ref, 0, 1, 0, 1);
+    },
+    onEnterBack: () => {
+      zoomAnimationFunction(ref, 1, 0, 1, 0);
+    },
+    onLeave: () => {
+      zoomAnimationFunction(ref, 0, 1, 0, 1);
+    },
+    toggleActions: "play none none none",
+  });
+};
+export const zoomOutAnimation = (ref) => {
+  ScrollTrigger.create({
+    trigger: ref,
+    start: "top 80%",
+    end: "bottom 20%",
+    onEnter: () => {
+      zoomAnimationFunction(ref, 2, 1, 1, 1);
+    },
+    onLeaveBack: () => {
+      zoomAnimationFunction(ref, 2, 1, 1, 1);
+    },
+    onEnterBack: () => {
+      zoomAnimationFunction(ref, 2, 1, 1, 1);
+    },
+    onLeave: () => {
+      zoomAnimationFunction(ref, 2, 1, 1, 1);
+    },
+    toggleActions: "play none none none",
+  });
+};
+export const zoomAnimationFunction = (
   ref,
   scaleFrom,
   scaleTo,

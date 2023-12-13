@@ -25,7 +25,7 @@ const AboutSections = ({ createRef, activeSection }) => {
       className="panel main-layout-container about-section-container"
       ref={createRef}
     >
-      <div className="absolute h-full w-full top-0 right-0 lg:opacity-100 opacity-40">
+      <div className="absolute h-full w-full lg:top-0 right-0 lg:opacity-100 opacity-40">
         <Image
           src={RightCircle}
           alt="about-right-circle"

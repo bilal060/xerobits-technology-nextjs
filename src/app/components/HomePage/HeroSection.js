@@ -1,7 +1,5 @@
 import Image from "next/image";
 import React, { useEffect } from "react";
-
-import CircleImg from "@/app/assets/images/circle.png";
 import HorizentalDots from "@/app/assets/images/horizental-dots.svg";
 import VerticalDots from "@/app/assets/images/vertical-dot.svg";
 import Button from "@/app/shared/Button";

@@ -8,7 +8,10 @@ import ProjectIdeaVerifiedImg from "@/app/assets/images/verified.svg";
 import Circle from "@/app/assets/images/circlefull.png";
 
 import Button from "@/app/shared/Button";
-import { zoomAnimation } from "@/app/helpers/GsapAnimations";
+import {
+  zoomInAnimation,
+  zoomOutAnimation,
+} from "@/app/helpers/GsapAnimations";
 gsap.registerPlugin(ScrollTrigger);
 
 const ProjectIdeaSection = ({ createRef, activeSection }) => {
@@ -19,44 +22,8 @@ const ProjectIdeaSection = ({ createRef, activeSection }) => {
     if (activeSection == "projectidea-section") {
       const mainDiv = mainDivRef.current;
       const circleImage = circleRef.current;
-
-      ScrollTrigger.create({
-        trigger: mainDiv,
-        start: "top 80%",
-        end: "bottom 20%",
-        onEnter: () => {
-          zoomAnimation(mainDiv, 1, 1, 1, 1);
-        },
-        onLeaveBack: () => {
-          zoomAnimation(mainDiv, 0, 1, 0, 1);
-        },
-        onEnterBack: () => {
-          zoomAnimation(mainDiv, 1, 0, 1, 0);
-        },
-        onLeave: () => {
-          zoomAnimation(mainDiv, 0, 1, 0, 1);
-        },
-        toggleActions: "play none none none",
-      });
-
-      ScrollTrigger.create({
-        trigger: circleImage,
-        start: "top 80%",
-        end: "bottom 20%",
-        onEnter: () => {
-          zoomAnimation(circleImage, 2, 1, 1, 1);
-        },
-        onLeaveBack: () => {
-          zoomAnimation(circleImage, 2, 1, 1, 1);
-        },
-        onEnterBack: () => {
-          zoomAnimation(circleImage, 2, 1, 1, 1);
-        },
-        onLeave: () => {
-          zoomAnimation(circleImage, 2, 1, 1, 1);
-        },
-        toggleActions: "play none none none",
-      });
+      zoomInAnimation(mainDiv);
+      zoomOutAnimation(circleImage);
     }
   }, [activeSection]);
 
@@ -71,7 +38,7 @@ const ProjectIdeaSection = ({ createRef, activeSection }) => {
             alt="circle-img"
             src={Circle}
             ref={circleRef}
-            className="lg:block hidden absolute lg:h-[500px] 2xl:h-[750px] lg:-top-20 2xl:-top-[6rem] 2xl:w-[70%] xl:w-[60%] w-[70%]"
+            className="lg:block hidden absolute lg:h-[500px] 2xl:h-[750px] lg:-top-20 2xl:-top-[6rem] 2xl:w-[70%] xl:w-[57%] w-[70%]"
           />
           <div
             ref={mainDivRef}
