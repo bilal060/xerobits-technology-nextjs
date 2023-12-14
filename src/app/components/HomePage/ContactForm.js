@@ -75,7 +75,7 @@ const ContactForm = ({ createRef, activeSection }) => {
         <div className=" flex flex-col-reverse  mx-auto md:grid md:grid-cols-12  gap-4">
           <div className="flex md:col-span-8 lg:col-span-6 mt-4 lg:mt-12 flex-col  z-10">
             <h3 className="text-[30px] md:text-[36px] capitalize  font-bold font-tripsans text-lightGray">
-              fill out this form to get started
+              Innovate With Confidence With Xero Bit Technology
             </h3>
             <div className="w-full">
               <Formik

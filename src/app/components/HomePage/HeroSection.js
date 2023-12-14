@@ -30,15 +30,14 @@ const HeroSection = ({ createRef, activeSection }) => {
         <Image
           src={VerticalDots}
           alt="HorizentalDots"
-          className="hidden 2xl:block 2xl:my-4 mb-4"
+          className="hidden xl:block 2xl:my-4 mb-4"
         />
         <h1 className="reveal-text lg:w-[819px] text-56px gradient-text-green">
-          Unleash Your Business Potential With Our Custom IT Solutions
+          Empowering Your Digital Dreams
         </h1>
         <p className="reveal-text md:w-[70%] lg:w-[713px] my-4 2xl:my-8 3xl:my-12 text-lightGray text-18px">
-          Customized solutions to simplify complex business processes, increase
-          productivity, and enhance customer satisfaction with Xero Bit
-          Technology
+          Empowering businesses to achieve their full potential through our up
+          to date technology and design.
         </p>
         <div className="content yobject-marked reveal-text">
           <Button
