@@ -1,11 +1,11 @@
-'use client';
-import Image from 'next/image';
-import { useState } from 'react';
-import { AiOutlineMenu } from 'react-icons/ai';
-import { AiOutlineClose } from 'react-icons/ai';
+"use client";
+import Image from "next/image";
+import { useState } from "react";
+import { AiOutlineMenu } from "react-icons/ai";
+import { AiOutlineClose } from "react-icons/ai";
 
-import Logo from '@/app/assets/images/logo.png';
-import NavLink from './NavLink';
+import Logo from "@/app/assets/images/logo.png";
+import NavLink from "./NavLink";
 
 const Navbar = () => {
   const [mobileSideBar, setMobileSidebar] = useState(false);
@@ -16,12 +16,12 @@ const Navbar = () => {
           <Image src={Logo} alt="navbar-logo" className="w-[128px] h-[30px]" />
         </div>
         <div className=" items-center hidden md:flex">
-          <NavLink href={'/'}>Home </NavLink>
-          <NavLink href={'/services'}>Services </NavLink>
-          <NavLink href={'/portfolio'}>Portfolio </NavLink>
-          <NavLink href={'/about-us'}>About Us </NavLink>
-          <NavLink href={'/blog'}>Blog </NavLink>
-          <NavLink href={'/contact'}>Contact </NavLink>
+          <NavLink href={"/"}>Home </NavLink>
+          <NavLink href={"#"}>Services </NavLink>
+          <NavLink href={"#"}>Portfolio </NavLink>
+          <NavLink href={"#"}>About Us </NavLink>
+          <NavLink href={"#"}>Blog </NavLink>
+          <NavLink href={"#"}>Contact </NavLink>
         </div>
         <div className="block md:hidden">
           <AiOutlineMenu
@@ -34,7 +34,7 @@ const Navbar = () => {
       {/* Mobile Navbar */}
       <div
         className={`mobile-sidebar block md:hidden ${
-          mobileSideBar ? 'menu-active fixed ' : ''
+          mobileSideBar ? "menu-active fixed " : ""
         }`}
       >
         <AiOutlineClose
@@ -46,38 +46,23 @@ const Navbar = () => {
           <Image src={Logo} alt="navbar-logo" className="w-[128px] h-[30px]" />
         </div>
         <div className="py-4 px-6 ">
-          <NavLink href={'/'} onClick={() => setMobileSidebar(!mobileSideBar)}>
-            Home{' '}
+          <NavLink href={"/"} onClick={() => setMobileSidebar(!mobileSideBar)}>
+            Home
           </NavLink>
-          <NavLink
-            href={'/services'}
-            onClick={() => setMobileSidebar(!mobileSideBar)}
-          >
-            Services{' '}
+          <NavLink href={"#"} onClick={() => setMobileSidebar(!mobileSideBar)}>
+            Services
           </NavLink>
-          <NavLink
-            href={'/portfolio'}
-            onClick={() => setMobileSidebar(!mobileSideBar)}
-          >
-            Portfolio{' '}
+          <NavLink href={"#"} onClick={() => setMobileSidebar(!mobileSideBar)}>
+            Portfolio
           </NavLink>
-          <NavLink
-            href={'/about-us'}
-            onClick={() => setMobileSidebar(!mobileSideBar)}
-          >
-            About Us{' '}
+          <NavLink href={"#"} onClick={() => setMobileSidebar(!mobileSideBar)}>
+            About Us
           </NavLink>
-          <NavLink
-            href={'/blog'}
-            onClick={() => setMobileSidebar(!mobileSideBar)}
-          >
-            Blog{' '}
+          <NavLink href={"#"} onClick={() => setMobileSidebar(!mobileSideBar)}>
+            Blog
           </NavLink>
-          <NavLink
-            href={'/contact'}
-            onClick={() => setMobileSidebar(!mobileSideBar)}
-          >
-            Contact{' '}
+          <NavLink href={"#"} onClick={() => setMobileSidebar(!mobileSideBar)}>
+            Contact
           </NavLink>
         </div>
       </div>
