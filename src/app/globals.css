@@ -116,7 +116,6 @@ body {
 }
 
 @keyframes rotate {
-
   from {
     transform: rotate(0deg);
   }
@@ -124,7 +123,6 @@ body {
   to {
     transform: rotate(360deg);
   }
-
 }
 
 .choose-us {
@@ -156,17 +154,21 @@ body {
 }
 
 .services {
-  background: linear-gradient(45deg,
-      rgba(7, 113, 81, 0.5) 0%,
-      rgba(7, 113, 81, 0) 25.75%,
-      rgba(7, 113, 81, 0) 2.75%);
+  background: linear-gradient(
+    45deg,
+    rgba(7, 113, 81, 0.5) 0%,
+    rgba(7, 113, 81, 0) 25.75%,
+    rgba(7, 113, 81, 0) 2.75%
+  );
 }
 
 .blogs {
-  background: linear-gradient(320deg,
-      rgba(7, 113, 81, 0.5) 0%,
-      rgba(7, 113, 81, 0) 20.75%,
-      rgba(7, 113, 81, 0) 2.75%);
+  background: linear-gradient(
+    320deg,
+    rgba(7, 113, 81, 0.5) 0%,
+    rgba(7, 113, 81, 0) 20.75%,
+    rgba(7, 113, 81, 0) 2.75%
+  );
 }
 
 .bg-project-idea-laptop {
@@ -209,7 +211,6 @@ body {
   opacity: 0.2 !important;
 }
 
-
 .rocket-img {
   animation: slideYAnimation 3s ease-in-out infinite alternate;
 }
@@ -237,7 +238,6 @@ body {
     transform: translateY(120px);
   }
 }
-
 
 /* Hide scrollbar for Chrome, Safari and Opera */
 /* body::-webkit-scrollbar {
@@ -267,10 +267,9 @@ body {
 }
 
 .container-home::-webkit-scrollbar-thumb {
-  background-color: #077151;
+  background: linear-gradient(180deg, #077151 0%, #43ad8d 47.92%, #077151 100%);
   border-radius: 4px;
   border: 2px solid #077151;
-  background-color: rgba(7, 113, 81, 0.50);
 }
 
 .transition {
@@ -355,5 +354,31 @@ body {
 @media (min-width: 500px) and (max-width: 767px) {
   .home-rectangle-bg {
     width: 70%;
+  }
+}
+
+.moving-border-animation {
+  position: absolute;
+  width: 100%;
+  animation: moveBorder 4s infinite linear;
+}
+.moving-border-animation > span {
+  position: absolute;
+  background: linear-gradient(180deg, #077151 0%, #43ad8d 47.92%, #077151 100%);
+  box-shadow: 0px 0px 36.96px 0px #2c9575, 0px 0px 63.36px 0px #2c9575,
+    0px 0px 110.88px 0px #2c9575;
+  width: 32px;
+  height: 2px;
+}
+
+@keyframes moveBorder {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
   }
 }
