@@ -3,10 +3,9 @@
 @tailwind utilities;
 
 @layer components {
-
   /* Main Layout Style */
   .main-layout-container {
-    @apply bg-darkBg relative flex flex-col justify-center h-[calc(100vh-75px)] md:h-[calc(100vh-100px)] overflow-hidden;
+    @apply bg-darkBg relative flex flex-col justify-center  overflow-hidden;
   }
 
   /* Green Gradient text */

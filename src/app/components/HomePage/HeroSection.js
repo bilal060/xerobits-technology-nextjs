@@ -9,6 +9,9 @@ const HeroSection = ({ createRef, activeSection }) => {
   useEffect(() => {
     if (activeSection == "hero-section") {
       textRevealAnimation(".reveal-text");
+      return () => {
+        textRevealAnimation(".reveal-text");
+      };
     }
   }, [activeSection]);
 
@@ -22,6 +25,9 @@ const HeroSection = ({ createRef, activeSection }) => {
         <Image
           src={HorizentalDots}
           alt="HorizentalDots"
+          width={"auto"}
+          height={"auto"}
+          loading="lazy"
           className="w-full h-full"
         />
       </div>
@@ -30,6 +36,9 @@ const HeroSection = ({ createRef, activeSection }) => {
         <Image
           src={VerticalDots}
           alt="HorizentalDots"
+          width={"auto"}
+          height={"auto"}
+          loading="lazy"
           className="hidden xl:block 2xl:my-4 mb-4"
         />
         <h1 className="reveal-text lg:w-[819px] text-56px gradient-text-green">
@@ -69,7 +78,7 @@ const HeroSection = ({ createRef, activeSection }) => {
               <span></span>
             </div>
           </div>
-          <div className="flex w-[70%] items-center justify-around mx-auto">
+          <div className="flex w-[85%] md:w-[70%] items-center justify-around mx-auto">
             <div className="flex flex-col items-center h-full justify-center border-r border-[#393939] w-full">
               <h3 className="text-56px gradient-text-green">450+</h3>
               <p className="text-18px text-lightGray text-[14px] ">

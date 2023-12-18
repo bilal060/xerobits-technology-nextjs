@@ -29,7 +29,10 @@ const AboutSections = ({ createRef, activeSection }) => {
         <Image
           src={RightCircle}
           alt="about-right-circle"
-          className=" h-[100%] 2xl:h-[100%] z-[-10px] absolute right-0 w-max lg:rotate-0 rotate-90 right-circle "
+          loading="lazy"
+          width={"auto"}
+          height={"auto"}
+          className=" h-[100%] 2xl:h-[100%] z-[-10px] absolute right-0 w-max lg:rotate-0  right-circle "
         />
       </div>
       <div className="container px-4 mx-auto z-10">
@@ -38,10 +41,13 @@ const AboutSections = ({ createRef, activeSection }) => {
             <div className="flex md:flex-row flex-col md:items-center items-start h-full md:gap-8 sm:gap-4 gap-2">
               <Image
                 src={AboutTextImg}
+                loading="lazy"
+                width={"auto"}
+                height={"auto"}
                 alt="about-text"
-                className=" hidden md:block md:h-[350px] lg:h-[80%] 2xl:h-[90%] z-[-10px] about-us-img"
+                className="hidden md:block md:h-[350px] lg:h-[80%] 2xl:h-[90%] z-[-10px] about-us-img"
               />
-              <h1 className="about-us md:hidden block">ABOUT US</h1>
+              <h1 className="about-us md:hidden block mt-4">ABOUT US</h1>
 
               <div className="flex flex-col 2xl:justify-around ">
                 <h3 className="text-[24px] lg:text-[48px] 2xl:text-[56px] font-tripsans font-bold text-lightGray lg:w-[552px] 2xl:w-[600px]">
@@ -76,8 +82,11 @@ const AboutSections = ({ createRef, activeSection }) => {
           <div className="flex lg:col-span-3 items-center justify-center w-full z-10">
             <Image
               src={AboutLogo}
+              loading="lazy"
+              width={"auto"}
+              height={"auto"}
               alt="about-section-img"
-              className="w-[80px] h-[80px]  md:w-[150px] lg:w-[350px] 2xl:w-[600px] md:h-[150px] 2xl:h-[600px] lg:h-[387px]"
+              className="w-[150px] h-[150px]  md:w-[150px] lg:w-[350px] 2xl:w-[600px] md:h-[150px] 2xl:h-[600px] lg:h-[387px]"
             />
           </div>
         </div>

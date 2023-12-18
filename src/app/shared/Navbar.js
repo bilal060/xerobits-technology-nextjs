@@ -13,7 +13,12 @@ const Navbar = () => {
     <div className="fixed w-full top-0 bg-darkBg z-20">
       <div className=" container px-4 mx-auto w-full h-[75px] md:h-[100px]   flex items-center justify-between">
         <div>
-          <Image src={Logo} alt="navbar-logo" className="w-[128px] h-[30px]" />
+          <Image
+            src={Logo}
+            alt="navbar-logo"
+            className="w-[128px] h-[30px]"
+            loading="lazy"
+          />
         </div>
         <div className=" items-center hidden md:flex">
           <NavLink href={"/"}>Home </NavLink>
@@ -43,7 +48,12 @@ const Navbar = () => {
           onClick={() => setMobileSidebar(false)}
         />
         <div className="flex items-center px-6 py-4 ">
-          <Image src={Logo} alt="navbar-logo" className="w-[128px] h-[30px]" />
+          <Image
+            src={Logo}
+            alt="navbar-logo"
+            className="w-[128px] h-[30px]"
+            loading="lazy"
+          />
         </div>
         <div className="py-4 px-6 ">
           <NavLink href={"/"} onClick={() => setMobileSidebar(!mobileSideBar)}>

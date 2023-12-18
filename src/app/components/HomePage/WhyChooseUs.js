@@ -22,6 +22,7 @@ const WhyChooseUs = ({ createRef, activeSection }) => {
         <Image
           src={BottomCircle}
           alt="circle"
+          loading="lazy"
           className="w-full h-full bottom-circle"
         />
       </div>
@@ -31,12 +32,12 @@ const WhyChooseUs = ({ createRef, activeSection }) => {
             <h3 className="text-[30px] md:text-[36px] lg:text-[48px] font-bold capitalize font-tripsans lg:leading-[64px] text-lightGray">
               Why Choose Us
             </h3>
-            <p className="text-[16px] md:text-[18px] xl:text-[20px] 2xl:text-[22px] md:my-4  font-normal font-tripsans text-lightGray leading-5 2xl:leading-7">
+            <p className="text-[16px] md:text-[18px] xl:text-[20px] 2xl:text-[22px] my-2 md:my-4  font-normal font-tripsans text-lightGray leading-5 2xl:leading-7">
               At Xero Bit Technology, we are committed to delivering exceptional
               value to our clients. Here’s why Xero Bit Technology is an Ideal
               company for you.
             </p>
-            <div className="flex items-start  md:mb-4 ">
+            <div className="flex items-start mb-2  md:mb-4 ">
               <BsCircleFill size={20} className="text-lightGray mr-2 md:mr-4" />
               <p className="why-us-section-text">
                 <b className="font-bold capitalize text-[18px]">
@@ -46,7 +47,7 @@ const WhyChooseUs = ({ createRef, activeSection }) => {
                 provide customized solutions that meet your unique requirements.
               </p>
             </div>
-            <div className="flex items-start  md:mb-4 ">
+            <div className="flex items-start mb-2 md:mb-4 ">
               <BsCircleFill size={20} className="text-lightGray mr-2 md:mr-4" />
               <p className="why-us-section-text">
                 <b className="font-bold capitalize text-[18px]">
@@ -57,7 +58,7 @@ const WhyChooseUs = ({ createRef, activeSection }) => {
                 thrive.
               </p>
             </div>
-            <div className="flex items-start  md:mb-4 ">
+            <div className="flex items-start mb-2  md:mb-4 ">
               <BsCircleFill size={20} className="text-lightGray mr-2 md:mr-4" />
               <p className=" why-us-section-text">
                 <b className="font-bold capitalize text-[18px]">
@@ -68,7 +69,7 @@ const WhyChooseUs = ({ createRef, activeSection }) => {
                 happy with our services.
               </p>
             </div>
-            <div className="flex items-start  md:mb-4 ">
+            <div className="flex items-start  mb-2 md:mb-4 ">
               <BsCircleFill size={20} className="text-lightGray mr-2 md:mr-4" />
               <p className="why-us-section-text">
                 <b className="font-bold capitalize text-[18px]">
@@ -84,7 +85,8 @@ const WhyChooseUs = ({ createRef, activeSection }) => {
             <Image
               src={WHyUsImage}
               alt="why-us-img"
-              className="w-full object-contain md:object-fill  h-[100px] sm:h-[150px] md:h-[250px] lg:h-[400px] 2xl:w-[397px] 3xl:h-[662px]"
+              loading="lazy"
+              className="object-contain md:object-fill w-[200px] h-[200px] sm:h-[250px]  md:h-[250px] lg:h-[400px] 2xl:w-[397px] 3xl:h-[662px]"
             />
           </div>
         </div>

@@ -1,13 +1,13 @@
-import Image from 'next/image';
-import React from 'react';
-import { FaFacebookF } from 'react-icons/fa';
-import { BsLinkedin, BsTwitter, BsTelephoneFill } from 'react-icons/bs';
-import { AiOutlineInstagram } from 'react-icons/ai';
-import { MdEmail } from 'react-icons/md';
-import { ImLocation } from 'react-icons/im';
+import Image from "next/image";
+import React from "react";
+import { FaFacebookF } from "react-icons/fa";
+import { BsLinkedin, BsTwitter, BsTelephoneFill } from "react-icons/bs";
+import { AiOutlineInstagram } from "react-icons/ai";
+import { MdEmail } from "react-icons/md";
+import { ImLocation } from "react-icons/im";
 
-import Logo from '@/app/assets/images/logo.png';
-import FooterLink from './FooterLink';
+import Logo from "@/app/assets/images/logo.png";
+import FooterLink from "./FooterLink";
 
 const Footer = () => {
   return (
@@ -19,6 +19,7 @@ const Footer = () => {
               src={Logo}
               alt="footer-logo"
               className="w-[184px] h-[42px]"
+              loading="lazy"
             />
             <p className="text-lightGray text-[16px] font-tripsans font-normal leading-5 lg:w-[390px] mt-4 lg:mt-8">
               Xero Bit Technology is a leading IT solutions provider dedicated
@@ -38,37 +39,37 @@ const Footer = () => {
             <h3 className="text-[20px] font-bold font-tripsans text-white leading-6 mb-4 md:mb-0">
               Services
             </h3>
-            <FooterLink href={'/'}>Digital Strategy</FooterLink>
-            <FooterLink href={'/'}>UX Design</FooterLink>
-            <FooterLink href={'/'}> Product Design</FooterLink>
-            <FooterLink href={'/'}>Content Strategy</FooterLink>
-            <FooterLink href={'/'}>Design & Concept</FooterLink>
-            <FooterLink href={'/'}>Social Media</FooterLink>
+            <FooterLink href={"/"}>Digital Strategy</FooterLink>
+            <FooterLink href={"/"}>UX Design</FooterLink>
+            <FooterLink href={"/"}> Product Design</FooterLink>
+            <FooterLink href={"/"}>Content Strategy</FooterLink>
+            <FooterLink href={"/"}>Design & Concept</FooterLink>
+            <FooterLink href={"/"}>Social Media</FooterLink>
           </div>
 
           <div className="col-span-12 md:col-span-4 mt-4 lg:mt-0 lg:col-span-2">
             <h3 className="text-[20px] font-bold font-tripsans text-white leading-6 mb-4 md:mb-0">
               Quick Links
             </h3>
-            <FooterLink href={'/'}>Services</FooterLink>
-            <FooterLink href={'/'}>About Us</FooterLink>
-            <FooterLink href={'/'}>Testimonials</FooterLink>
-            <FooterLink href={'/'}>Blog</FooterLink>
-            <FooterLink href={'/'}>Contact</FooterLink>
+            <FooterLink href={"/"}>Services</FooterLink>
+            <FooterLink href={"/"}>About Us</FooterLink>
+            <FooterLink href={"/"}>Testimonials</FooterLink>
+            <FooterLink href={"/"}>Blog</FooterLink>
+            <FooterLink href={"/"}>Contact</FooterLink>
           </div>
           <div className="col-span-12 md:col-span-4 mt-4 lg:mt-0 lg:col-span-2">
             <h3 className="text-[20px] font-bold font-tripsans text-white leading-6 mb-4 md:mb-0">
               Services
             </h3>
-            <FooterLink href={'/'}>
+            <FooterLink href={"/"}>
               <BsTelephoneFill className="text-lightGray mr-2" />
               +1 234 56789
             </FooterLink>
-            <FooterLink href={'/'}>
+            <FooterLink href={"/"}>
               <MdEmail className="text-lightGray mr-2" />
               yourmail@mail.com
             </FooterLink>
-            <FooterLink href={'/'}>
+            <FooterLink href={"/"}>
               <ImLocation className="text-lightGray mr-2" />
               Your address goes here
             </FooterLink>

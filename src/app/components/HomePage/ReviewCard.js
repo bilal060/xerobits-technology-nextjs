@@ -18,6 +18,7 @@ const ReviewCrad = () => {
         <div className="flex items-center">
           <Image
             src={ClientImg}
+            loading="lazy"
             alt="client-img"
             className="w-[64px] h-[64px]"
           />
@@ -31,10 +32,32 @@ const ReviewCrad = () => {
           </div>
         </div>
         <div className="flex items-center">
-          <Image src={StarImg} alt="client-img" className="w-[16px] h-[16px]" />
-          <Image src={StarImg} alt="client-img" className="w-[16px] h-[16px]" />
-          <Image src={StarImg} alt="client-img" className="w-[16px] h-[16px]" />
-          <Image src={StarImg} alt="client-img" className="w-[16px] h-[16px]" />
+          <Image
+            src={StarImg}
+            alt="client-img"
+            className="w-[16px] h-[16px]"
+            loading="lazy"
+          />
+          <Image
+            src={StarImg}
+            alt="client-img"
+            className="w-[16px] h-[16px]"
+            loading="lazy"
+          />
+          <Image
+            src={StarImg}
+            alt="client-img"
+            className="w-[16px] h-[16px]"
+            loading="lazy"
+          />
+          <Image
+            src={StarImg}
+            alt="client-img"
+            className="w-[16px] h-[16px]"
+            loading="lazy"
+            height={"auto"}
+            width="auto"
+          />
         </div>
       </div>
     </div>

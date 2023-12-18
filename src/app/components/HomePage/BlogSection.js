@@ -49,32 +49,35 @@ const BlogSection = ({ createRef, activeSection }) => {
           nec vulputate lectus, in accumsan leo. Aliquam tempor orci sed ex
           facilisis vestibulum.
         </p>
-        <div className="flex gap-4 mt-4 sm:grid-cols-3 overflow-auto no-scrollbar">
+        <div className=" grid gap-4 mt-4 grid-cols-1 md:grid-cols-3 overflow-auto no-scrollbar">
           {(blogs || []) &&
             blogs.map((data) => (
               <div
                 key={data._id}
-                className="min-w-[250px] xs:min-w-[300px] sm:min-w-[unset]"
+                className="min-w-[250px] my-2 md:my-0 xs:min-w-[300px] xs:max-w-[400px] md:min-w-[unset] mx-auto md:mx-0"
               >
                 <div className="w-full ">
-                  <Image
-                    src={data.image}
-                    alt="blog-img"
-                    className="w-full lg:h-[150px]  2xl:h-[235px]"
-                  />
+                  <div className="lg:h-[150px]  2xl:h-[235px] overflow-hidden rounded-lg">
+                    <Image
+                      loading="lazy"
+                      src={data.image}
+                      alt="blog-img"
+                      className="w-full h-full img-zoom"
+                    />
+                  </div>
                   <h3 className=" text-[20px] md:text-[24px] lg:my-2 font-bold font-tripsans text-lightGray">
                     {data.name}
                   </h3>
                   <p className="text-[16px] my-2 lg:my-2  font-tripsans font-normal text-lightGray">
                     {data.description}
                   </p>
-                  <div className="flex items-center ">
-                    <p className="text-lightGray font-bold font-tripsans text-[16px]">
+                  <div className="flex items-center group cursor-pointer w-fit">
+                    <p className="text-lightGray font-bold font-tripsans text-[16px] group-hover:text-green">
                       Read Blog
                     </p>
                     <FaAngleRight
                       size={20}
-                      className="text-lightGray ml-2 mt-1"
+                      className="text-lightGray ml-2 mt-1 group-hover:text-green"
                     />
                   </div>
                 </div>

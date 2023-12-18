@@ -13,6 +13,7 @@ import BlogSection from "./components/HomePage/BlogSection";
 import ContactForm from "./components/HomePage/ContactForm";
 import "@/app/assets/css/landing.css";
 import "@/app/assets/css/button.css";
+import "@/app/assets/css/home.css";
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);

@@ -5,7 +5,7 @@ const Button = (props) => {
   return (
     <>
       <button
-        className={`reveal-text ${className} ${type} ${
+        className={`${className} ${type} ${
           type === "green" ? "bg-green" : "bg-transparent"
         } bg-green text-white button--ujarak button--inverted`}
       >

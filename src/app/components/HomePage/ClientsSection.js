@@ -19,7 +19,7 @@ const ClientsSection = ({ createRef }) => {
             nec vulputate lectus, in accumsan leo. Aliquam tempor orci sed ex
             facilisis vestibulum.
           </p>
-          <div className="my-8 flex flex-col gap-2 md:gap-4">
+          <div className=" mt-6 md:mt-0 md:my-8 flex flex-col gap-2 md:gap-4">
             <div className="w-full">
               <CarouselComponent>
                 {clientsData?.map((data, index) => (

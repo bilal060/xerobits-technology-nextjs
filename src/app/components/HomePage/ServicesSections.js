@@ -39,18 +39,22 @@ const ServicesSections = ({ createRef, activeSection }) => {
     >
       <div className="container mx-auto z-10 px-4 h-full">
         <div className=" h-full  flex justify-center flex-col">
+          <h1 className="about-us md:hidden block my-4">OUR SERVICES</h1>
           <div className="flex flex-row-reverse items-center">
             <div>
               <Image
                 alt="services-text-img"
                 className="hidden md:block h-[400px] w-[40px] xl:h-[430px] xl:w-[45px] 3xl:w-[75px] 3xl:h-[760px] ml-8 services-img"
                 src={ServicesText}
+                loading="lazy"
+                width={"auto"}
+                height={"auto"}
               />
             </div>
             <div className="flex-1 grid grid-cols-12 h-full gap-0">
               {servicesImagesData?.map((data, index) => (
                 <div
-                  className={`flex flex-col justify-center transition ${changeGridLayout(
+                  className={`flex flex-col justify-center transition xs:min-h-[100px] ${changeGridLayout(
                     data?.id
                   )} `}
                   key={index}
@@ -69,8 +73,8 @@ const ServicesSections = ({ createRef, activeSection }) => {
                   >
                     <h3
                       className={`${
-                        checkImageId(data?.id) ? "hidden" : "block"
-                      } services-img-text writing-mode md:rotate-180 `}
+                        checkImageId(data?.id) ? "hidden" : "flex"
+                      } services-img-text writing-mode md:rotate-180 xs:h-full md:h-auto justify-center items-center`}
                     >
                       {data?.title}
                     </h3>

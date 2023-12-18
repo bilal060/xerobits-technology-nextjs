@@ -6,6 +6,7 @@ const CarouselComponent = (props) => {
   const settings = {
     dots: false,
     autoplay: true,
+    infinite: true,
     speed: 2000,
     autoplaySpeed: 5000,
     cssEase: "linear",
@@ -25,6 +26,15 @@ const CarouselComponent = (props) => {
       },
       {
         breakpoint: 990,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: false,
+        },
+      },
+      {
+        breakpoint: 820,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,

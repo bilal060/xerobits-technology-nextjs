@@ -65,6 +65,7 @@ const ContactForm = ({ createRef, activeSection }) => {
     >
       <div className="absolute top-0 right-0 xs:opacity-100 opacity-30">
         <Image
+          loading="lazy"
           src={CircleRightImg}
           alt="HorizentalDots"
           className="w-full h-full about-image"
@@ -100,7 +101,7 @@ const ContactForm = ({ createRef, activeSection }) => {
                       textarea="ture"
                     />
                     <Button
-                      className="md-btn xl:mt-[56px] lg:mt-[44px] md:mt-[36px] mt-3 btn-contact"
+                      className="md-btn xl:mt-[40px] lg:mt-[30px] md:mt-[25px] mt-3 btn-contact"
                       type="green"
                       text="Send Message"
                     />
@@ -109,12 +110,17 @@ const ContactForm = ({ createRef, activeSection }) => {
               </Formik>
             </div>
           </div>
-          <div className=" md:col-span-4 lg:col-span-6  mt-4 lg:mt-12  items-center justify-center flex-col z-10 sm:flex hidden">
-            <Image
-              src={ContactImg}
-              alt="about-text"
-              className="w-full max-w-[400px] h-[300px] md:w-full md:h-[350px] lg:max-w-[500px] lg:h-[400px] z-[-10px]"
-            />
+          <div className=" md:col-span-4 lg:col-span-6  mt-4 lg:mt-12  items-center justify-center flex-col z-10 sm:flex ">
+            <div className="overflow-hidden rounded-lg">
+              <Image
+                loading="lazy"
+                src={ContactImg}
+                width={"auto"}
+                height={"auto"}
+                alt="about-text"
+                className="img-zoom max-w-[400px] h-[250px] mx-auto md:mx-0 md:max-w-[400px]  md:w-full md:h-[350px] lg:max-w-[500px] lg:h-[400px] z-[-10px]"
+              />
+            </div>
           </div>
         </div>
       </div>
