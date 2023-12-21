@@ -1,0 +1,117 @@
+/* Ujarak */
+.button--ujarak {
+    vertical-align: middle;
+    position: relative;
+    z-index: 1;
+    -webkit-backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    color: #FFF;
+    text-align: center;
+    font-family: Trip Sans;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%;
+    border-radius: 8px;
+    -webkit-transition: border-color 0.4s, color 0.4s;
+    transition: border-color 0.4s, color 0.4s;
+}
+
+.button--ujarak.green {
+    background: var(--Green, #077151);
+}
+
+.button--ujarak.white {
+    border: 1px solid white;
+}
+
+.button--ujarak.white::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    color: #077151 !important;
+    z-index: -1;
+    opacity: 0;
+    -webkit-transform: scale3d(0.7, 1, 1);
+    transform: scale3d(0.7, 1, 1);
+    -webkit-transition: -webkit-transform 0.4s, opacity 0.4s;
+    transition: transform 0.4s, opacity 0.4s;
+    -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+    transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+    border-radius: 8px;
+}
+
+.button--ujarak::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--Green, #004929);
+    z-index: -1;
+    opacity: 0;
+    -webkit-transform: scale3d(0.7, 1, 1);
+    transform: scale3d(0.7, 1, 1);
+    -webkit-transition: -webkit-transform 0.4s, opacity 0.4s;
+    transition: transform 0.4s, opacity 0.4s;
+    -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+    transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+    border-radius: 8px;
+}
+
+.button--ujarak,
+.button--ujarak::before {
+    -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+    transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.button--ujarak.white:hover {
+    color: #077151 !important
+}
+
+.button--ujarak:hover::before {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+
+.dotted-square {
+    transition: right cubic-bezier(0.165, 0.84, 0.44, 1);
+    border-radius: 8px;
+}
+
+@media (min-width: 640px) {
+    .dotted-square {
+        right: calc(51vw - (640px / 2));
+    }
+}
+
+@media (min-width: 768px) {
+    .dotted-square {
+        right: calc(51vw - (768px / 2));
+    }
+}
+
+@media (min-width: 1024px) {
+    .dotted-square {
+        right: calc(51vw - (1024px / 2));
+    }
+}
+
+@media (min-width: 1240px) {
+    .dotted-square {
+        right: calc(51vw - (1240px / 2));
+    }
+}
+
+@media (min-width: 1536px) {
+    .dotted-square {
+        right: calc(51vw - (1536px / 2));
+    }
+}

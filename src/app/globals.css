@@ -1,3 +1,102 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--darkBg);
+}
+
+:root {
+  --green: #077151;
+  --darkBg: #0f0e19;
+}
+
+@font-face {
+  font-family: Trip Sans;
+  font-weight: bold;
+  src: url("./assets/fonts/trip-sans-bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: Trip Sans;
+  font-weight: normal;
+  src: url("./assets/fonts/trip-sans-mono-regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: Trip Sans;
+  font-weight: medium;
+  src: url("./assets/fonts/trip-sans-medium.otf") format("opentype");
+}
+
+@font-face {
+  font-family: Gotham Pro;
+  font-weight: bold;
+  src: url("./assets/fonts/Gotham-Bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: Gotham Pro;
+  font-weight: noraml;
+  src: url("./assets/fonts/Gotham-Light.otf") format("opentype");
+}
+
+@font-face {
+  font-family: Gotham Pro;
+  font-weight: medium;
+  src: url("./assets/fonts/GothamMedium.ttf") format("opentype");
+}
+
+/* Active Navbar Link */
+.active-navlink {
+  border-top: 2px solid var(--green);
+  border-bottom: 2px solid var(--green);
+  width: fit-content;
+}
+
+/* Mobile Side Bar */
+.mobile-sidebar {
+  position: fixed;
+  top: 0;
+  right: 800px;
+  z-index: 200;
+  background-color: var(--darkBg);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 100vh;
+  transition: all 1s ease !important;
+}
+
+.menu-active {
+  display: block;
+  right: 0;
+  width: 100%;
+  transition: all 1s ease !important;
+}
+
+.transition {
+  transition: all 1s ease !important;
+}
+
+.img-zoom {
+  -ms-transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+.img-zoom:hover {
+  -ms-transform: scale(1.1, 1.1);
+  -webkit-transform: scale(1.1, 1.1);
+  -moz-transform: scale(1.1, 1.1);
+  -o-transform: scale(1.1, 1.1);
+  transform: scale(1.1, 1.1);
+}
